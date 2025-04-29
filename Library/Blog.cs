@@ -24,7 +24,6 @@ namespace Library
             Description = description;
             Event = e;
             Writer = writer;
-
         }
 
         public override string ToString()

@@ -8,7 +8,7 @@ namespace Library
 {
     internal class Event
     {
-        public String Name { get; set; }
+        public string Name { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
         public List<Member> Members { get; set; }

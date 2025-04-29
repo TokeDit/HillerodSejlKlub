@@ -1,2 +1,3 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+﻿using Library;
+
+Member member1 = new Member("T", "a", "32", "ge", 2, 3);

@@ -15,13 +15,13 @@ namespace Library
         public int MemberCertificateType { get; set; }
         public int MemberAccesLevel { get; set; }
         
-        enum BoatSize
+        public enum BoatSize
         {
             small = 1,
             medium,
             large
         }
-        enum Acceslevel
+        public enum Acceslevel
         {
             admin = 1,
             medlem
@@ -36,7 +36,7 @@ namespace Library
             MemberCertificateType = memberCertificationType;
             MemberAccesLevel = memberAccesLevel;
 
-            //thrower en exception hvis Int værdien er under 1 eller over 3 for membercertification,
+            //Thrower en exception hvis int værdien er under 1 eller over 3 for memberCertification
             try
             {
                 if (memberCertificationType < 1 || memberCertificationType > 3)
@@ -48,7 +48,7 @@ namespace Library
             {
                 Console.WriteLine(MemberCertificationError.Message);
             }
-            //Thrower en exception hvs Int værdien er under 1 eller over 2 for MemberAccesLevel
+            //Thrower en exception hvis int værdien er under 1 eller over 2 for MemberAccesLevel
             try
             {
                 if (memberAccesLevel < 1 || memberAccesLevel > 2)

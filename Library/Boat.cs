@@ -24,9 +24,24 @@ namespace Library
             Reperations = new List<Reperation>();
         }
 
+        public void AddReperation(Reperation reperation)
+        {
+            Reperations.Add(reperation);
+        }
+        public string GetReperationsAsString()
+        {
+            string s = "";
+            if (Reperations.Count != 0 && Reperations != null)
+            {
+                foreach (Reperation reperation in Reperations) { s += reperation.ToString() + "\n"; }
+                
+            }
+            return s;
+           
+        }
         public override string ToString()
         {
-            return $"Navn: {Name}\nModel: {Model}\nType: {Type}\nProduktions dato: {ProductionDate}\nSejlnummer: {SailingNumber}\nMotor information: {MotorInformation}\nMål i fod: {Measurement}\nMinimum certifikat krav: Level{MinimumCertificationRequirement}\n";
+            return $"Navn: {Name}\nModel: {Model}\nType: {Type}\nProduktions dato: {ProductionDate}\nSejlnummer: {SailingNumber}\nMotor information: {MotorInformation}\nMål i fod: {Measurement}\nMinimum certifikat krav: Level {MinimumCertificationRequirement}\n";
         }
 
     }

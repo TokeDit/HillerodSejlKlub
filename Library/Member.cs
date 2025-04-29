@@ -8,12 +8,12 @@ namespace Library
 {
     public class Member
     {
-        string Name { get; set; }
-        string Adresse { get; set; }
-        string TelephoneNumber { get; set; }
-        string Email { get; set; }
-        int MemberCertificateType { get; set; }
-        int MemberAccesLevel { get; set; }
+        public string Name { get; set; }
+        public string Adresse { get; set; }
+        public string TelephoneNumber { get; set; }
+        public string Email { get; set; }
+        public int MemberCertificateType { get; set; }
+        public int MemberAccesLevel { get; set; }
         
         enum BoatSize
         {

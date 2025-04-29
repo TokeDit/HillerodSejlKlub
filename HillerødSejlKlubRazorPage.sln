@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35728.132 d17.12
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HillerødSejlKlubRazorPage", "HillerødSejlKlubRazorPage\HillerødSejlKlubRazorPage.csproj", "{ADDA47B6-182B-4377-B286-95B52DFAF169}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Console", "Console\Console.csproj", "{980EAA38-D240-4D8B-80EA-E6E80D4FE569}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Library", "Library\Library.csproj", "{981B0EFA-0FF0-4577-91C0-DE59B0323205}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{ADDA47B6-182B-4377-B286-95B52DFAF169}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ADDA47B6-182B-4377-B286-95B52DFAF169}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ADDA47B6-182B-4377-B286-95B52DFAF169}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ADDA47B6-182B-4377-B286-95B52DFAF169}.Release|Any CPU.Build.0 = Release|Any CPU
+		{980EAA38-D240-4D8B-80EA-E6E80D4FE569}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{980EAA38-D240-4D8B-80EA-E6E80D4FE569}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{980EAA38-D240-4D8B-80EA-E6E80D4FE569}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{980EAA38-D240-4D8B-80EA-E6E80D4FE569}.Release|Any CPU.Build.0 = Release|Any CPU
+		{981B0EFA-0FF0-4577-91C0-DE59B0323205}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{981B0EFA-0FF0-4577-91C0-DE59B0323205}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{981B0EFA-0FF0-4577-91C0-DE59B0323205}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{981B0EFA-0FF0-4577-91C0-DE59B0323205}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

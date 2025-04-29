@@ -12,22 +12,22 @@ namespace Library
         public string Adresse { get; set; }
         public string TelephoneNumber { get; set; }
         public string Email { get; set; }
-        public int MemberCertificateType { get; set; }
-        public int MemberAccesLevel { get; set; }
+        public BoatSize MemberCertificateType { get; set; }
+        public Acceslevel MemberAccesLevel { get; set; }
         
-        enum BoatSize
+        public enum BoatSize
         {
             small = 1,
             medium,
             large
         }
-        enum Acceslevel
+        public enum Acceslevel
         {
             admin = 1,
             medlem
         }
         
-        public Member(string name, string adresse, string telephoneNumber, string email, int memberCertificationType, int memberAccesLevel)
+        public Member(string name, string adresse, string telephoneNumber, string email, BoatSize memberCertificationType, Acceslevel memberAccesLevel)
         {
             Name = name;
             Adresse = adresse;
@@ -37,29 +37,29 @@ namespace Library
             MemberAccesLevel = memberAccesLevel;
 
             //thrower en exception hvis Int værdien er under 1 eller over 3 for membercertification,
-            try
-            {
-                if (memberCertificationType < 1 || memberCertificationType > 3)
-                {
-                    throw new Exception("Member certificat må ikke være under 1 eller over 3");
-                }
-            }
-            catch (Exception MemberCertificationError)
-            {
-                Console.WriteLine(MemberCertificationError.Message);
-            }
-            //Thrower en exception hvs Int værdien er under 1 eller over 2 for MemberAccesLevel
-            try
-            {
-                if (memberAccesLevel < 1 || memberAccesLevel > 2)
-                {
-                    throw new Exception("Adgangs niveau ikke fundet!!");
-                }
-            }
-            catch (Exception MemberAccesLevelError)
-            {
-                Console.WriteLine(MemberAccesLevelError.Message);
-            }
+            //try
+            //{
+            //    if (memberCertificationType < 1 || memberCertificationType > 3)
+            //    {
+            //        throw new Exception("Member certificat må ikke være under 1 eller over 3");
+            //    }
+            //}
+            //catch (Exception MemberCertificationError)
+            //{
+            //    Console.WriteLine(MemberCertificationError.Message);
+            //}
+            ////Thrower en exception hvs Int værdien er under 1 eller over 2 for MemberAccesLevel
+            //try
+            //{
+            //    if (memberAccesLevel < 1 || memberAccesLevel > 2)
+            //    {
+            //        throw new Exception("Adgangs niveau ikke fundet!!");
+            //    }
+            //}
+            //catch (Exception MemberAccesLevelError)
+            //{
+            //    Console.WriteLine(MemberAccesLevelError.Message);
+            //}
         }
        
         public override string ToString()
@@ -68,13 +68,13 @@ namespace Library
             string memberCertification = "";
             switch (MemberCertificateType)
             {
-                case (int)BoatSize.small:
+                case BoatSize.small:
                     memberCertification = "lille båd";
                     break;
-                case (int)BoatSize.medium:
+                case BoatSize.medium:
                     memberCertification = "Medium båd";
                     break;
-                case (int)BoatSize.large:
+                case BoatSize.large:
                     memberCertification = "Stor båd";
                     break;
                     
@@ -82,10 +82,10 @@ namespace Library
             string memberAcceslevel = "";
             switch (MemberAccesLevel)
             {
-                case (int)Acceslevel.admin:
+                case Acceslevel.admin:
                     memberAcceslevel = "Admin";
                     break;
-                case (int)Acceslevel.medlem:
+                case Acceslevel.medlem:
                     memberAcceslevel = "Medlem";
                     break;
             }

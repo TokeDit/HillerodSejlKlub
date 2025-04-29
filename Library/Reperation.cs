@@ -15,7 +15,7 @@ namespace Library
 
         public override string ToString()
         {
-            return $"Reperationer: {Description}\n{Date}";
+            return $"Reperation: {Description}\nDato: {Date}";
         }
     }
 }

@@ -9,7 +9,7 @@ namespace Library
     public class Boat
     {
         private static int idNext = 1;
-        public int id { get; private set; }
+        public int Id { get; private set; }
         public string Name { get; set; }
         public string Model { get; set; }
         public string Type { get; set; }
@@ -18,12 +18,13 @@ namespace Library
         public string MotorInformation { get; set; }
         public int Measurement { get; set; }
         public int MinimumCertificationRequirement { get; set; }
-        public List<Reperation> Reperations { get; set; } 
+        public List<Reperation> ReperationsNeeded { get; set; }
+        public List<Reperation> ReperationsFixed { get; set; }
         public int ReperationIdNext { get; private set; } = 1;
 
         public Boat(string name, string model, string type, DateOnly productionDate, int sailingNumber, string motorInformation, int measurement, int minimumCertificationRequirement)
         {
-            id = idNext++; 
+            Id = idNext++; 
             Name = name; 
             Model = model; 
             Type = type; 
@@ -32,22 +33,48 @@ namespace Library
             MotorInformation = motorInformation; 
             Measurement = measurement; 
             MinimumCertificationRequirement = minimumCertificationRequirement;
-            Reperations = new List<Reperation>();
+            ReperationsNeeded = new List<Reperation>();
+            ReperationsFixed = new List<Reperation>();
             
         }
 
-        public void AddReperation(string description, DateOnly date)
+        public void AddReperation(string description, bool isFixed)
         {
-            Reperations.Add(new Reperation(description, date, this));
-            ReperationIdNext++;
+            if (!isFixed)
+            {
+                ReperationsNeeded.Add(new Reperation(description, isFixed, this));
+            }
+            else
+            {
+                ReperationsFixed.Add(new Reperation(description, isFixed, this));
+            }
+
+                ReperationIdNext++;
+        }
+        public void FixReperation(Reperation reperation, DateOnly dateFixed)
+        {
+            if (ReperationsNeeded.Contains(reperation))
+            {
+                reperation.Date = dateFixed;
+                reperation.IsRepaired = true;
+                ReperationsFixed.Add(reperation);
+                ReperationsNeeded.Remove(reperation);
+            }
         }
         public string GetReperationsAsString()
         {
             string s = "";
-            if (Reperations.Count != 0 && Reperations != null)
+            if (ReperationsNeeded.Count != 0 && ReperationsNeeded != null)
             {
-                foreach (Reperation reperation in Reperations) { s += reperation.ToString() + "\n"; }
-                
+                s += "Reperationer der skal laves: ";
+                foreach (Reperation reperation in ReperationsNeeded) { s += reperation.ToString() + "\n"; }
+
+            }
+            if (ReperationsFixed.Count != 0 && ReperationsFixed != null)
+            {
+                s += "Reperationer der er lavet: ";
+                foreach (Reperation reperation in ReperationsFixed) { s += reperation.ToString() + "\n"; }
+
             }
             return s;
            

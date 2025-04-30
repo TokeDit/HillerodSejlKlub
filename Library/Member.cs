@@ -38,7 +38,8 @@ namespace Library
             Email = email;
             MemberCertificateType = memberCertificationType;
             MemberAccesLevel = memberAccesLevel;
-            
+
+            //MemberRepo.AllMembers.Add(this);
 
             //thrower en exception hvis Int værdien er under 1 eller over 3 for membercertification,
             //try
@@ -65,10 +66,10 @@ namespace Library
             //    Console.WriteLine(MemberAccesLevelError.Message);
             //}
         }
-       
+
         public override string ToString()
         {
-            //2 Switch statements 
+            
             string memberCertification = "";
             switch (MemberCertificateType)
             {
@@ -95,7 +96,7 @@ namespace Library
             }
 
 
-            return $"Name: {Name}\nAdresse: {Adresse}\nTelephone number: {TelephoneNumber}\nEmail: {Email}\nBåd certificat: {memberCertification}\nMedlems niveau: {memberAcceslevel}";
+            return $"Name: {Name}\nMember Id: {Id}\nAdresse: {Adresse}\nTelephone number: {TelephoneNumber}\nEmail: {Email}\nBåd certificat: {memberCertification}\nMedlems niveau: {memberAcceslevel}\n";
         }
     
     }

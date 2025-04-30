@@ -8,6 +8,8 @@ namespace Library
 {
     internal class Event
     {
+        private static int idNext = 1;
+        public int Id { get; private set; }
         public string Name { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
@@ -16,6 +18,7 @@ namespace Library
 
         public Event(string name, DateTime startdate, DateTime enddate, List<Member> members, Member cordCoordinator)
         {
+            Id = idNext++;
             Name = name;
             StartDate = startdate;
             EndDate = enddate;

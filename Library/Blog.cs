@@ -9,6 +9,8 @@ namespace Library
 {
     internal class Blog
     {
+        private static int idNext = 1;
+        public int Id { get; private set; }
         public string Name {get; set;}
         public DateTime StartDate { get; set;}
         public DateTime EndDate { get; set;}
@@ -18,12 +20,14 @@ namespace Library
 
         public Blog(string name, DateTime startdate, DateTime enddate, string description, Event e, Member writer)
         {
+            Id = idNext;
             Name = name;
             StartDate = startdate;
             EndDate = enddate;
             Description = description;
             Event = e;
             Writer = writer;
+            
         }
 
         public override string ToString()

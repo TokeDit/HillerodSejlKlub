@@ -8,6 +8,8 @@ namespace Library
 {
     public class Member
     {
+        private static int idNext = 1;
+        public int Id { get; private set; }
         public string Name { get; set; }
         public string Adresse { get; set; }
         public string TelephoneNumber { get; set; }
@@ -29,12 +31,14 @@ namespace Library
         
         public Member(string name, string adresse, string telephoneNumber, string email, BoatSize memberCertificationType, Acceslevel memberAccesLevel)
         {
+            Id = idNext++;
             Name = name;
             Adresse = adresse;
             TelephoneNumber = telephoneNumber;
             Email = email;
             MemberCertificateType = memberCertificationType;
             MemberAccesLevel = memberAccesLevel;
+            
 
             //thrower en exception hvis Int værdien er under 1 eller over 3 for membercertification,
             //try

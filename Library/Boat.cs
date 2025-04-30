@@ -8,6 +8,8 @@ namespace Library
 {
     public class Boat
     {
+        private static int idNext = 1;
+        public int id { get; private set; }
         public string Name { get; set; }
         public string Model { get; set; }
         public string Type { get; set; }
@@ -17,16 +19,27 @@ namespace Library
         public int Measurement { get; set; }
         public int MinimumCertificationRequirement { get; set; }
         public List<Reperation> Reperations { get; set; } 
+        public int ReperationIdNext { get; private set; } = 1;
 
         public Boat(string name, string model, string type, DateOnly productionDate, int sailingNumber, string motorInformation, int measurement, int minimumCertificationRequirement)
         {
-            Name = name; Model = model; Type = type; ProductionDate = productionDate; SailingNumber = sailingNumber; MotorInformation = motorInformation; Measurement = measurement; MinimumCertificationRequirement = minimumCertificationRequirement;
+            id = idNext++; 
+            Name = name; 
+            Model = model; 
+            Type = type; 
+            ProductionDate = productionDate; 
+            SailingNumber = sailingNumber; 
+            MotorInformation = motorInformation; 
+            Measurement = measurement; 
+            MinimumCertificationRequirement = minimumCertificationRequirement;
             Reperations = new List<Reperation>();
+            
         }
 
-        public void AddReperation(Reperation reperation)
+        public void AddReperation(string description, DateOnly date)
         {
-            Reperations.Add(reperation);
+            Reperations.Add(new Reperation(description, date, this));
+            ReperationIdNext++;
         }
         public string GetReperationsAsString()
         {

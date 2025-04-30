@@ -14,7 +14,6 @@ namespace Library
         {
             boats = new List<Boat>();
             filteredBoats = new List<Boat>();
-            boats.Add(new Boat("Der er ingen båd", "", "", new(0, 0, 0), 0, "", 0, 0));
         }
         #region Methods
         //Adds a boat to the list of boats
@@ -28,10 +27,13 @@ namespace Library
                 if (boat.id == id) filteredBoats.Add(boat);
 
             }
+            string msg = $"Din søgning gav ingen resultater. Vi fandt ingen både med det angivne ID";
+            if (filteredBoats.Count <= 0) throw new NoSearhResultException(msg);
             return filteredBoats;
             
 
         }
+        // Finds
         public List<Boat> FilterBoatByName(string name)
         {
             filteredBoats.Clear();
@@ -39,7 +41,8 @@ namespace Library
             {
                 if (boat.Name == name) filteredBoats.Add(boat);
             }
-            //if (filteredBoats.Count <= 0) throw NoMatchingSearchExeption(name);
+            string msg = "Din søgning gav ingen resultater. Vi fandt ingen både med det angivne navn.";
+            if (filteredBoats.Count <= 0) throw new NoSearhResultException(msg);
             return filteredBoats;
         }
         // Returns all objects from the given list as a string

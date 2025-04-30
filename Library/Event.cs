@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Library
 {
-    internal class Event
+    public class Event
     {
         private static int idNext = 1;
         public int Id { get; private set; }

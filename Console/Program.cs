@@ -2,7 +2,7 @@
 
 
 
-
+BoatRepo boats = new BoatRepo();
 MemberRepo memberRepo = new MemberRepo();
 BookingRepo bookingRepo = new BookingRepo();
 BoatRepo boatRepo = new BoatRepo();
@@ -24,6 +24,11 @@ Console.WriteLine(bookingRepo.ReturnListAsString(bookingRepo.FindBookingByBoatNa
 
 Console.WriteLine(memberRepo.ReturnListAsString(memberRepo.FindMemberByName("Toke")));
 
-Console.WriteLine(memberRepo.DeleteMember(2));
-
-Console.WriteLine(memberRepo.ReturnListAsString(memberRepo.FindMemberById(2)));
+try
+{
+	boats.FilterBoatByName("Claus");
+}
+catch (NoSearhResultException noResult)
+{
+    Console.WriteLine(noResult.Message);
+}

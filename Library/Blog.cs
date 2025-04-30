@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Library
 {
-    internal class Blog
+    public class Blog
     {
         private static int idNext = 1;
         public int Id { get; private set; }

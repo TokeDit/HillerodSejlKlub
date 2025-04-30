@@ -14,7 +14,6 @@ namespace Library
         {
             boats = new List<Boat>();
             filteredBoats = new List<Boat>();
-            boats.Add(new Boat("Der er ingen båd", "", "", new(0, 0, 0), 0, "", 0, 0));
         }
         #region Methods
         //Adds a boat to the list of boats
@@ -23,9 +22,10 @@ namespace Library
         public bool DeleteBoat(Boat boat) { return boats.Remove(boat); }
         public List<Boat> FilterBoatById(int id) 
         {
+            filteredBoats.Clear();
             foreach (Boat boat in boats) 
             {
-                if (boat.id == id) filteredBoats.Add(boat);
+                if (boat.Id == id) filteredBoats.Add(boat);
 
             }
             return filteredBoats;

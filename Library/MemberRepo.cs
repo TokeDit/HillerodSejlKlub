@@ -4,26 +4,34 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Library
+namespace Library 
 {
     public class MemberRepo
     {
-        private List<Member> allMembers;
-        private List<Member> filteredMembers;
+        private static List<Member> allMembers;
+        private static List<Member> filteredMembers;
         public MemberRepo()
         {
             allMembers = new List<Member>();
             filteredMembers = new List<Member>();
         }
         public void AddMember(Member member) { allMembers.Add(member); }
-        public bool DeleteMember(Member member) { return allMembers.Remove(member); }
+        //public bool DeleteMember(int) { return allMembers.Remove(int); }
 
-        public void EditMember()
+        public bool DeleteMember(int id)
         {
-
+            foreach (Member m in allMembers)
+            {
+                if (m.Id.Equals(id))
+                {
+                    return allMembers.Remove(m);
+                }
+            }
+            return false;
         }
 
-        //Filters the
+
+        //Filters the List by the Unique Id given to a Member
         public List<Member> FindMemberById(int Id)
         {
             filteredMembers.Clear();

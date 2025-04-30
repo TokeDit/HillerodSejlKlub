@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Library
 {
-    internal class Event
+    public class Event
     {
         private static int idNext = 1;
         public int Id { get; private set; }
@@ -16,13 +16,13 @@ namespace Library
         public List<Member> Members { get; set; }
         public Member CordCoordinator { get; set; }
 
-        public Event(string name, DateTime startdate, DateTime enddate, List<Member> members, Member cordCoordinator)
+        public Event(string name, DateTime startdate, DateTime enddate, Member cordCoordinator)
         {
             Id = idNext++;
             Name = name;
             StartDate = startdate;
             EndDate = enddate;
-            Members = members;
+            Members = new List<Member>();
             CordCoordinator = cordCoordinator;
         }
 

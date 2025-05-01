@@ -12,7 +12,7 @@ public class MainHandler
 
     public MainHandler()
     {
-        FindKeyValuePair("FOIJEWFOI FJWEIOFJEOIEW JFWEIOJFWEOI OIJFEOWIJ");
+        FindKeyValuePair(Console.ReadLine());
         FindKey();
     }
 
@@ -31,8 +31,8 @@ public class MainHandler
                 case "list":
                     ValueEventHandler.KeyList(keyValuePair.Value);
                     break;
-                case "new":
-                    ValueEventHandler.KeyList(keyValuePair.Value);
+                case "tilføj":
+                    ValueEventHandler.KeyNew(keyValuePair.Value);
                     break;
             }
         }

@@ -13,7 +13,7 @@ EventRepo eventRepo = new EventRepo();
 
 Member member = new Member("foiew", "", "", "", Member.BoatSize.small, Member.Acceslevel.admin);
 
-string json = File.ReadAllText("/home/stefan/projects/SchoolShit/HillerodSejlKlub/Data/Member.json");
+//string json = File.ReadAllText("/home/stefan/projects/SchoolShit/HillerodSejlKlub/Data/Member.json");
 // Member member1
 
 MainHandler main = new MainHandler();

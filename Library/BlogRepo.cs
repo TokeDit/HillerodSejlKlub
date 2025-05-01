@@ -28,7 +28,6 @@ namespace Library
             return blogs;
         }
 
-
         private Blog GetBlogById(int id)
         {
             foreach (Blog blog in blogs)

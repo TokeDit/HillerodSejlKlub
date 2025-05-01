@@ -57,7 +57,12 @@ namespace Library
                     return filteredEvents;
                 }
             }
-            return null;
+            if (filteredEvents == null || filteredEvents.Count <= 0)
+            {
+                string msg = $"Din søgning gav ingen resultater. Vi fandt ingen begivenhed med det angivne navn";
+                throw new NoSearhResultException(msg);
+            }
+            return filteredEvents;
         }
 
         public void UpdateEvent(Event updatedEvent)

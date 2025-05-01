@@ -16,6 +16,7 @@ namespace Library
             filteredBoats = new List<Boat>();
         }
         #region Methods
+        public List<Boat> GetBoats() { return boats; }
         //Adds a boat to the list of boats
         public void AddBoat(Boat boat) { boats.Add(boat); }
         //Removes a specific boat from the list of boats

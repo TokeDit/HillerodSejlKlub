@@ -19,7 +19,7 @@ namespace Library
             blogs = new List<Blog>();
             filteredBlogs = new List<Blog>();
         }
-
+        public List<Blog> GetBlogs() { return blogs; }
         // Method to add a blog
         public void AddBlog(Blog blog)
         {

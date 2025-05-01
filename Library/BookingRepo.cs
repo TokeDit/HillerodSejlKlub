@@ -17,6 +17,8 @@ namespace Library
             filteredBookings = new List<Booking>();
            
         }
+
+        public List<Booking> GetBookings() { return allBookings; }
         public void AddBooking(Booking booking) { allBookings.Add(booking); }
        
 

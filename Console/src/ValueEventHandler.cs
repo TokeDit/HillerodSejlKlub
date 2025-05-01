@@ -5,10 +5,12 @@ using Library;
 
 public static class ValueEventHandler
 {
-
-    public static BoatRepo boatRepo1 = new BoatRepo();
-    
     static MemberRepo members = new();
+    public static BoatRepo boatRepo1 = new BoatRepo();
+    static BlogRepo blogs = new BlogRepo();
+    static EventRepo events = new EventRepo();
+    static BookingRepo bookings = new BookingRepo();
+    //Handles logic for the values of the user input after key "List"/"se" is chosen to print out our lists of objects
     public static void KeyList(string value)
     {
         switch (value)
@@ -16,16 +18,32 @@ public static class ValueEventHandler
             case "medlemmer":
                 foreach (Member member in members.GetMembers())
                 {
-
+                    member.ToString();
                 }
                 break;
             case "både":
+                foreach (Boat boat in boatRepo1.GetBoats())
+                {
+                    boat.ToString();
+                }
                 break;
             case "blogs":
+                foreach (Blog blog in blogs.GetBlogs())
+                {
+                    blog.ToString();
+                }
                 break;
             case "begivenheder":
+                foreach (Event e in events.GetEvents())
+                {
+                    e.ToString();
+                }
                 break;
             case "bookings":
+                foreach (Booking booking in bookings.GetBookings())
+                {
+                    booking.ToString();
+                }
                 break;
         }
     }

@@ -10,10 +10,12 @@ namespace Library
     public class EventRepo
     {
         private List<Event> events;
+        private List<Event> filteredEvents;
 
         public EventRepo()
         {
             events = new List<Event>();
+            filteredEvents = new List<Event>();
         }
 
         public void AddEvent(Event newEvent)
@@ -45,16 +47,22 @@ namespace Library
             return ev;
         }
 
-        public Event GetEventByName(string name)
+        public List<Event> GetEventByName(string name)
         {
             foreach (Event e in events)
             {
                 if (e.Name == name)
                 {
-                    return e;
+                    filteredEvents.Add(e);
+                    return filteredEvents;
                 }
             }
-            return null;
+            if (filteredEvents == null || filteredEvents.Count <= 0)
+            {
+                string msg = $"Din søgning gav ingen resultater. Vi fandt ingen begivenhed med det angivne navn";
+                throw new NoSearhResultException(msg);
+            }
+            return filteredEvents;
         }
 
         public void UpdateEvent(Event updatedEvent)

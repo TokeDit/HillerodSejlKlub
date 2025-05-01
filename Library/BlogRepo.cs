@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Dynamic;
 using System.Linq;
+using System.Reflection.Metadata;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -11,10 +12,12 @@ namespace Library
     public class BlogRepo
     {
         private List<Blog> blogs;
+        private List<Blog> filteredBlogs;
 
         public BlogRepo() 
         { 
             blogs = new List<Blog>();
+            filteredBlogs = new List<Blog>();
         }
 
         // Method to add a blog
@@ -28,29 +31,40 @@ namespace Library
             return blogs;
         }
 
-
-        private Blog GetBlogById(int id)
+        private Blog? GetBlogById(int id)
         {
-            foreach (Blog blog in blogs)
+            Blog? blog = null;
+            foreach (Blog b in blogs)
             {
-                if (blog.Id == id)
+                if (b.Id == id)
                 {
-                    return blog;
+                    return blog = b;
                 }
             }
-            return null;
+            if (blog == null)
+            {
+                string msg = $"Din søgning gav ingen resultater. Vi fandt ingen blog med det angivne ID";
+                throw new NoSearhResultException(msg);
+            }
+            return blog;
         }
 
-        public Blog GetBlogByName(string name)
+        public List<Blog> GetBlogByName(string name)
         {
             foreach(Blog blog in blogs)
             {
                 if (blog.Name == name)
                 {
-                    return blog;
+                    filteredBlogs.Add(blog);
+                    return filteredBlogs;
                 }
             }
-            return null;
+            if (filteredBlogs == null || filteredBlogs.Count <= 0)
+            {
+                string msg = $"Din søgning gav ingen resultater. Vi fandt ingen blog med det angivne titel";
+                throw new NoSearhResultException(msg);
+            }
+            return filteredBlogs;
         }
 
       public void UpdateBlog(Blog updadedBlog)

@@ -34,17 +34,23 @@ namespace Library
 
 
         //Filters the List by the Unique Id given to a Booking
-        public Booking FilterBookingById(int Id)
+        public Booking? FilterBookingById(int Id)
         {
-            foreach (Booking m in allBookings)
+            Booking? booking = null;
+            foreach (Booking b in allBookings)
             {
-                if (m.Id.Equals(Id))
+                if (b.Id.Equals(Id))
                 {
-                    return m;
+                    return booking = b;
 
                 }
             }
-            return null;
+            if (booking == null)
+            {
+                string msg = $"Din søgning gav ingen resultater. Vi fandt ingen booking med det angivne ID";
+                throw new NoSearhResultException(msg);
+            }
+            return booking;
         }
         
         public List<Booking> FilterBookingByBoatName(string name)
@@ -56,6 +62,11 @@ namespace Library
                 {
                     filteredBookings.Add(b);
                 }
+            }
+            if (filteredBookings == null || filteredBookings.Count <= 0)
+            {
+                string msg = $"Din søgning gav ingen resultater. Vi fandt ingen booking med det angivne navn";
+                throw new NoSearhResultException(msg);
             }
             return filteredBookings;
         }

@@ -34,6 +34,11 @@ public static class ValueEventHandler
                     {
                         Console.WriteLine(e.Message);
                     }
+                    catch (ArgumentException e)
+                    {
+                        Console.WriteLine(e.Message);
+                        break;
+                    }
                 }
                 m_eventSuccess = false;
                 break;
@@ -71,11 +76,10 @@ public static class ValueEventHandler
     // Takes the boats and changes one value, input is taken from the console
     private static void EditBoat()
     {
-        // boatRepo1.AddBoat(new Boat("fewfwe", "jgewoi", "jgwoei", new DateOnly(2000, 2, 12), 1, "fw", 1, 1));
+        boatRepo1.AddBoat(new Boat("fewfwe", "jgewoi", "jgwoei", new DateOnly(2000, 2, 12), 1, "fw", 1, 1));
         if (boatRepo1.ToList().Count() == 0)
         {
-            Console.WriteLine("Der er ikke nogle både");
-            return;
+            throw new ArgumentException("Der er ikke nogle både");
         }
         
         Console.WriteLine("--------------");

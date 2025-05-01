@@ -30,19 +30,18 @@ namespace Library
             return false;
         }
 
-
         //Filters the List by the Unique Id given to a Member
-        public Member FilterMemberById(int Id)
+        public Member FindMemberById(int Id)
         {
             foreach (Member m in allMembers)
             {
                 if (m.Id.Equals(Id))
                 {
-                    return (m) ;
-
+                    return m;
                 }
             }
             return null;
+           
         }
         //Filters the list by the argument given in this case Name
         public List<Member> FilterMemberByName(string Name)

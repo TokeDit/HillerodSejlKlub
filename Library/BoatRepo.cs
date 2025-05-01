@@ -20,17 +20,22 @@ namespace Library
         public void AddBoat(Boat boat) { boats.Add(boat); }
         //Removes a specific boat from the list of boats
         public bool DeleteBoat(Boat boat) { return boats.Remove(boat); }
-        public List<Boat> FilterBoatById(int id) 
+        public Boat? FindBoatById(int id) 
         {
-            filteredBoats.Clear();
-            foreach (Boat boat in boats) 
+            Boat? boat = null;
+            foreach (Boat b in boats) 
             {
-                if (boat.Id == id) filteredBoats.Add(boat);
+                if (b.Id == id) return boat = b;
 
             }
-            string msg = $"Din søgning gav ingen resultater. Vi fandt ingen både med det angivne ID";
-            if (filteredBoats.Count <= 0) throw new NoSearhResultException(msg);
-            return filteredBoats;
+            
+            if (boat == null) 
+            {
+                string msg = $"Din søgning gav ingen resultater. Vi fandt ingen både med det angivne ID";
+                throw new NoSearhResultException(msg);
+            }
+            
+            return boat;
             
 
         }
@@ -42,8 +47,11 @@ namespace Library
             {
                 if (boat.Name == name) filteredBoats.Add(boat);
             }
-            string msg = "Din søgning gav ingen resultater. Vi fandt ingen både med det angivne navn.";
-            if (filteredBoats.Count <= 0) throw new NoSearhResultException(msg);
+            if (filteredBoats.Count <= 0)
+            {
+                string msg = "Din søgning gav ingen resultater. Vi fandt ingen både med det angivne navn.";
+                throw new NoSearhResultException(msg);
+            }
             return filteredBoats;
         }
         // Returns all objects from the given list as a string

@@ -28,16 +28,23 @@ namespace Library
             return events;
         }
 
-        public Event GetEventById(int id)
+        public Event? GetEventById(int id)
         {
+            Event? ev = null;
             foreach (Event e in events)
             {
                 if (e.Id == id) 
                 {  
                     return e; 
                 }
+
             }
-            return null;
+            if (ev == null)
+            {
+                string msg = $"Din søgning gav ingen resultater. Vi fandt ingen begivenheder med det angivne ID";
+                throw new NoSearhResultException(msg);
+            }
+            return ev;
         }
 
         public List<Event> GetEventByName(string name)

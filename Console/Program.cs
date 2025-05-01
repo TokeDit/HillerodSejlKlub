@@ -1,9 +1,6 @@
 ﻿using Library;
 
 
-Boat boat = new("Clausine", "træ", "flyder", new(2000, 01, 01), 123456, "kører godt", 20, 1);
-Console.WriteLine(boat);
-Console.WriteLine(boat.GetReperationsAsString());
 
 BoatRepo boats = new BoatRepo();
 MemberRepo memberRepo = new MemberRepo();

@@ -11,27 +11,28 @@ namespace Library
     {
         private static int idNext = 1;
         public int Id { get; private set; }
-        public string Name {get; set;}
-        public DateTime StartDate { get; set;}
-        public DateTime EndDate { get; set;}
+        public string Title {get; set;}
+        public DateOnly CreationDate { get; set;}
         public string Description {get; set;}
-        public Event Event {get; set;}
+        public Event? RelatedEvent {get; set;}
         public Member Writer {get; set;}
 
-        public Blog(string name, DateTime startdate, DateTime enddate, string description, Member writer)
+        public Blog(string title, DateOnly creationdate, string description, Member writer, Event? relatedEvent = null)
         {
             Id = idNext;
-            Name = name;
-            StartDate = startdate;
-            EndDate = enddate;
+            Title = title;
+            CreationDate = creationdate;
             Description = description;
             Writer = writer;
+            RelatedEvent = relatedEvent;
+
+            idNext++;
             
         }
 
         public override string ToString()
         {
-            return $"Navn: {Name}\nStart dato: {StartDate}\nSlut dato: {EndDate}\nBeskrivelse: {Description}\nBegivenhed: {Event}\nMedlemmer: {Writer}.";
+            return $"Titel: {Title}\nDato for upload: {CreationDate}\nBeskrivelse: {Description}\nBegivenhed: {RelatedEvent}\nSkribent: {Writer}.";
         }
     }
 }

@@ -3,6 +3,10 @@ using System.Security.Cryptography;
 using Library;
 using System.Text.Json;
 
+#nullable disable
+
+
+
 
 BoatRepo boats = new BoatRepo();
 MemberRepo memberRepo = new MemberRepo();
@@ -11,7 +15,9 @@ BoatRepo boatRepo = new BoatRepo();
 BlogRepo blogRepo = new BlogRepo();
 EventRepo eventRepo = new EventRepo();
 
-Member member = new Member("foiew", "", "", "", Member.BoatSize.small, Member.Acceslevel.admin);
+
+
+
 
 //string json = File.ReadAllText("/home/stefan/projects/SchoolShit/HillerodSejlKlub/Data/Member.json");
 // Member member1
@@ -60,3 +66,4 @@ MainHandler main = new MainHandler();
 // Console.WriteLine(bookingRepo.FilterBookingById(1).ToString());
 
 // Console.WriteLine(bookingRepo.FilterBookingById(2).ToString());
+

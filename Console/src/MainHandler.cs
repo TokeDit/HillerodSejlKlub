@@ -10,10 +10,30 @@ public class MainHandler
 {
     private static CustomDictionary<string, string> m_dictionary = new CustomDictionary<string, string>();
 
+
+
+
+
+
     public MainHandler()
     {
-        FindKeyValuePair(Console.ReadLine());
-        FindKey();
+       
+        while (true)
+        {
+            Console.WriteLine("Indtast en kommando (eller 'exit' for at afslutte):");
+            string? input = Console.ReadLine();
+
+            if (string.IsNullOrWhiteSpace(input))
+                continue;
+
+            if (input.ToLower() == "exit")
+                break;
+
+            FindKeyValuePair(input);
+            FindKey();
+        }
+        //FindKeyValuePair(Console.ReadLine());
+        //FindKey();
     }
 
     public static Member JSonRead(string filePath)

@@ -10,6 +10,7 @@ namespace Library
     {
         private static List<Member> allMembers;
         private static List<Member> filteredMembers;
+
         public MemberRepo()
         {
             allMembers = new List<Member>();

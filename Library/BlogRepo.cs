@@ -11,8 +11,8 @@ namespace Library
 {
     public class BlogRepo
     {
-        private List<Blog> blogs;
-        private List<Blog> filteredBlogs;
+        private static  List<Blog> blogs;
+        private static List<Blog> filteredBlogs;
 
         public BlogRepo() 
         { 
@@ -53,7 +53,7 @@ namespace Library
         {
             foreach(Blog blog in blogs)
             {
-                if (blog.Name == name)
+                if (blog.Title == name)
                 {
                     filteredBlogs.Add(blog);
                     return filteredBlogs;

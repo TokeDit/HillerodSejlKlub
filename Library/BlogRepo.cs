@@ -17,10 +17,6 @@ namespace Library
             blogs = new List<Blog>();
         }
 
-        // Add blogs to the repository
-        public Blog blog1 = new Blog("Boat trip", new DateTime(2025, 05, 06, 12, 00, 00), new DateTime(2025, 05, 06, 18, 00, 00), "Boat trip to check boat functionality.", "Alice");
-        public Blog blog2 = new Blog("Boat party", new DateTime(2025, 05, 18, 12, 00, 00), new DateTime(2025, 05, 18, 18, 00, 00), "Bob’s birthday party.", "Bob");
-
         // Method to add a blog
         public void AddBlog(Blog blog)
         {
@@ -32,37 +28,46 @@ namespace Library
             return blogs;
         }
 
-       //?? public List<Blog> GetEventById(int id)
-       // {
-       //     return blogs;
-       // }
 
-        public void RemoveBlog(int id)
+        private Blog GetBlogById(int id)
+        {
+            foreach (Blog blog in blogs)
+            {
+                if (blog.Id == id)
+                {
+                    return blog;
+                }
+            }
+            return null;
+        }
+
+        public Blog GetBlogByName(string name)
+        {
+            foreach(Blog blog in blogs)
+            {
+                if (blog.Name == name)
+                {
+                    return blog;
+                }
+            }
+            return null;
+        }
+
+      public void UpdateBlog(Blog updadedBlog)
+        {
+            RemoveBlog(updadedBlog.Id);
+            AddBlog(updadedBlog);
+        }
+
+        public bool RemoveBlog(int id)
         {
             Blog blogToRemove = GetBlogById(id);
             if (blogToRemove != null)
             {
                 blogs.Remove(blogToRemove);
+                return true;
             }
-        }
-
-        private Blog GetBlogById(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        // Method to edit a blog
-        public bool EditBlog(int id, string newName, string newDescription, string newWriter)
-        {
-            Blog blogToEdit= GetBlogById(id); 
-            if (blogToEdit != null)
-            {
-                blogToEdit.Name = newName;
-                blogToEdit.Description = newDescription;
-                blogToEdit.Writer = newWriter;
-                return true; // Successful edit
-            }
-            return false; // Blog with the given ID not found
+            return false;
         }
     }
 }

@@ -16,10 +16,6 @@ namespace Library
             events = new List<Event>();
         }
 
-        // Add events
-        public Event event1 = new Event("Boat trip", new DateTime(2025, 05, 01, 12, 00, 00) , new DateTime(2025, 05, 01, 18, 00, 00), "Alice");
-        public Event event2 = new Event("Boat party", new DateTime(2025, 05, 08, 12, 00, 00), new DateTime(2025, 05, 08, 18, 00, 00), "Bob");
-
         public void AddEvent(Event newEvent)
         {
             events.Add(newEvent);
@@ -30,17 +26,42 @@ namespace Library
             return events;
         }
 
-        public List<Event> GetEventById(int id)
+        public Event GetEventById(int id)
         {
-            return events;
+            foreach (Event e in events)
+            {
+                if (e.Id == id) 
+                {  
+                    return e; 
+                }
+            }
+            return null;
+        }
+
+        public Event GetEventByName(string name)
+        {
+            foreach (Event e in events)
+            {
+                if (e.Name == name)
+                {
+                    return e;
+                }
+            }
+            return null;
+        }
+
+        public void UpdateEvent(Event updatedEvent)
+        {
+            RemoveEvent(updatedEvent.Id);
+            AddEvent(updatedEvent);
         }
 
         public bool RemoveEvent(int id)
         {
-            var eventToDelete = GetEventById(id);
-            if (eventToDelete != null)
+            Event eventToRemove = GetEventById(id);
+            if (eventToRemove != null)
             {
-                events.GetEnumerator();
+                events.Remove(eventToRemove);
                 return true;
             }
             return false;

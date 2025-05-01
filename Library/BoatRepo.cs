@@ -14,7 +14,11 @@ namespace Library
        
         public BoatRepo()
         {
-            boats = new List<Boat>();
+            boats = new List<Boat>()
+            {
+                new("Tetra", "Tera", "jolle", new(2000, 10, 01), 12345678, "Ingen motor, den har sejl", 3, 0),
+                new("Ferva", "Feva", "moderne jolle", new(2010, 9, 26), 87654321, "Har mare sejl", 4, 1)
+            };
             filteredBoats = new List<Boat>();
         }
         #region Methods

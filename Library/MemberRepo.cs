@@ -11,9 +11,15 @@ namespace Library
         private static List<Member> allMembers;
         private static List<Member> filteredMembers;
 
+
         public MemberRepo()
         {
-            allMembers = new List<Member>();
+            allMembers = new List<Member>()
+            {
+                new Member("Toke", "Holte", "12345678", "Toke@toke.toke", Member.BoatSize.large, Member.Acceslevel.admin),
+                new Member("Lars", "Albertslund", "87654321", "Lars@lars.lars", Member.BoatSize.small, Member.Acceslevel.medlem),
+                new Member("Lars", "Husum", "45678912", "LarsLars@larslars.lars", Member.BoatSize.medium, Member.Acceslevel.admin)
+            };
             filteredMembers = new List<Member>();
 
         }

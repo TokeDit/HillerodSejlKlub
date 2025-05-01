@@ -8,12 +8,12 @@ using System.Text.Json;
 
 
 
-BoatRepo boats = new BoatRepo();
-MemberRepo memberRepo = new MemberRepo();
-BookingRepo bookingRepo = new BookingRepo();
-BoatRepo boatRepo = new BoatRepo();
-BlogRepo blogRepo = new BlogRepo();
-EventRepo eventRepo = new EventRepo();
+//BoatRepo boats = new BoatRepo();
+//MemberRepo memberRepo = new MemberRepo();
+//BookingRepo bookingRepo = new BookingRepo();
+//BoatRepo boatRepo = new BoatRepo();
+//BlogRepo blogRepo = new BlogRepo();
+//EventRepo eventRepo = new EventRepo();
 
 
 

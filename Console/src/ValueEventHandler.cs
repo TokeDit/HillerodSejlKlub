@@ -5,7 +5,6 @@ using Library;
 
 public static class ValueEventHandler
 {
-    static MemberRepo members = new();
     public static BoatRepo boatRepo1 = new BoatRepo();
     public static MemberRepo memberRepo1 = new MemberRepo();
     public static EventRepo eventRepo1 = new EventRepo();
@@ -18,33 +17,38 @@ public static class ValueEventHandler
         switch (value)
         {
             case "medlemmer":
-                foreach (Member member in members.GetMembers())
+                foreach (Member member in memberRepo1.GetMembers())
                 {
-                    member.ToString();
+                   
+                    Console.WriteLine(member.ToString());
                 }
                 break;
             case "både":
                 foreach (Boat boat in boatRepo1.GetBoats())
                 {
-                    boat.ToString();
+                    Console.WriteLine(boat.ToString());
                 }
                 break;
             case "blogs":
-                foreach (Blog blog in blogs.GetBlogs())
+                blogRepo1.AddBlog(new Blog("Esti's fødselsdag", new DateOnly(2025, 05, 01), "I dag er det Esti's fødselsdag!", memberRepo1.FindMemberById(1), null));
+                foreach (Blog blog in blogRepo1.GetBlogs())
                 {
-                    blog.ToString();
+                    
+                    Console.WriteLine(blog.ToString());
                 }
                 break;
             case "begivenheder":
-                foreach (Event e in events.GetEvents())
+                eventRepo1.AddEvent(new Event("Firma Fest", new DateTime(2025, 05, 16, 17, 00, 00), new DateTime(2025, 05, 16, 23, 00, 00), memberRepo1.FindMemberById(2)));
+                foreach (Event e in eventRepo1.GetEvents())
                 {
-                    e.ToString();
+                    Console.WriteLine(e.ToString());
                 }
                 break;
             case "bookings":
-                foreach (Booking booking in bookings.GetBookings())
+                bookingRepo1.AddBooking(new Booking(new DateTime(2025, 05, 27, 10, 00, 00), new DateTime(2025, 05, 27, 15, 010, 00), memberRepo1.FindMemberById(3), boatRepo1.FindBoatById(1), "ingen"));
+                foreach (Booking booking in bookingRepo1.GetBookings())
                 {
-                    booking.ToString();
+                    Console.WriteLine(booking.ToString());
                 }
                 break;
         }

@@ -31,17 +31,22 @@ namespace Library
         }
 
         //Filters the List by the Unique Id given to a Member
-        public Member FindMemberById(int Id)
+        public Member? FindMemberById(int Id)
         {
-            filteredMembers.Clear();
+            Member? member = null;
             foreach (Member m in allMembers)
             {
                 if (m.Id.Equals(Id))
                 {
-                    return m;
+                    return member = m;
                 }
             }
-            return null;
+            if (member == null)
+            {
+                string msg = $"Din søgning gav ingen resultater. Vi fandt ingen medlemmer med det angivne ID";
+                throw new NoSearhResultException(msg);
+            }
+            return member;
            
         }
         //Filters the list by the argument given in this case Name
@@ -55,6 +60,11 @@ namespace Library
                     filteredMembers.Add(m);
                   
                 }
+            }
+            if (filteredMembers == null || filteredMembers.Count <= 0)
+            {
+                string msg = $"Din søgning gav ingen resultater. Vi fandt ingen medlemmer med det angivne navn";
+                throw new NoSearhResultException(msg);
             }
             return filteredMembers;
         }

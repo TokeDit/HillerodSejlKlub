@@ -10,10 +10,12 @@ namespace Library
     public class EventRepo
     {
         private List<Event> events;
+        private List<Event> filteredEvents;
 
         public EventRepo()
         {
             events = new List<Event>();
+            filteredEvents = new List<Event>();
         }
 
         public void AddEvent(Event newEvent)
@@ -38,13 +40,14 @@ namespace Library
             return null;
         }
 
-        public Event GetEventByName(string name)
+        public List<Event> GetEventByName(string name)
         {
             foreach (Event e in events)
             {
                 if (e.Name == name)
                 {
-                    return e;
+                    filteredEvents.Add(e);
+                    return filteredEvents;
                 }
             }
             return null;

@@ -1,24 +1,25 @@
 using Library;
 using System;
 using System.Threading.Channels;
-using Library;
+
+#nullable disable
+
 
 public static class ValueEventHandler
 {
-    static MemberRepo members = new();
-    public static BoatRepo boatRepo1 = new BoatRepo();
-    public static MemberRepo memberRepo1 = new MemberRepo();
-    public static EventRepo eventRepo1 = new EventRepo();
-    public static BlogRepo blogRepo1 = new BlogRepo();
-    public static BookingRepo bookingRepo1 = new BookingRepo();
-    
+    static MemberRepo memberRepo1 = new();
+    static BoatRepo boatRepo1 = new BoatRepo();
+    static EventRepo eventRepo1 = new EventRepo();
+    static BlogRepo blogRepo1 = new BlogRepo();
+    static BookingRepo bookingRepo1 = new BookingRepo();
+
 
     public static void KeyList(string value)
     {
         switch (value)
         {
             case "medlemmer":
-                foreach (Member member in members.GetMembers())
+                foreach (Member member in memberRepo1.GetMembers())
                 {
                     member.ToString();
                 }
@@ -30,19 +31,19 @@ public static class ValueEventHandler
                 }
                 break;
             case "blogs":
-                foreach (Blog blog in blogs.GetBlogs())
+                foreach (Blog blog in blogRepo1.GetBlogs())
                 {
                     blog.ToString();
                 }
                 break;
             case "begivenheder":
-                foreach (Event e in events.GetEvents())
+                foreach (Event e in eventRepo1.GetEvents())
                 {
                     e.ToString();
                 }
                 break;
             case "bookings":
-                foreach (Booking booking in bookings.GetBookings())
+                foreach (Booking booking in bookingRepo1.GetBookings())
                 {
                     booking.ToString();
                 }
@@ -210,7 +211,7 @@ public static class ValueEventHandler
         string guests = Console.ReadLine();
 
         Booking booking1 = new Booking(startDateTime, endDateTime, member, boat, guests);
-
+        bookingRepo1.AddBooking(booking1);
     }
 
 

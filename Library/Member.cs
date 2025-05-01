@@ -8,12 +8,14 @@ namespace Library
 {
     public class Member
     {
+        private static int idNext = 1;
+        public int Id { get; private set; }
         public string Name { get; set; }
         public string Adresse { get; set; }
         public string TelephoneNumber { get; set; }
         public string Email { get; set; }
-        public int MemberCertificateType { get; set; }
-        public int MemberAccesLevel { get; set; }
+        public BoatSize MemberCertificateType { get; set; }
+        public Acceslevel MemberAccesLevel { get; set; }
         
         public enum BoatSize
         {
@@ -27,8 +29,9 @@ namespace Library
             medlem
         }
         
-        public Member(string name, string adresse, string telephoneNumber, string email, int memberCertificationType, int memberAccesLevel)
+        public Member(string name, string adresse, string telephoneNumber, string email, BoatSize memberCertificationType, Acceslevel memberAccesLevel)
         {
+            Id = idNext++;
             Name = name;
             Adresse = adresse;
             TelephoneNumber = telephoneNumber;
@@ -36,45 +39,47 @@ namespace Library
             MemberCertificateType = memberCertificationType;
             MemberAccesLevel = memberAccesLevel;
 
-            //Thrower en exception hvis int værdien er under 1 eller over 3 for memberCertification
-            try
-            {
-                if (memberCertificationType < 1 || memberCertificationType > 3)
-                {
-                    throw new Exception("Member certificat må ikke være under 1 eller over 3");
-                }
-            }
-            catch (Exception MemberCertificationError)
-            {
-                Console.WriteLine(MemberCertificationError.Message);
-            }
-            //Thrower en exception hvis int værdien er under 1 eller over 2 for MemberAccesLevel
-            try
-            {
-                if (memberAccesLevel < 1 || memberAccesLevel > 2)
-                {
-                    throw new Exception("Adgangs niveau ikke fundet!!");
-                }
-            }
-            catch (Exception MemberAccesLevelError)
-            {
-                Console.WriteLine(MemberAccesLevelError.Message);
-            }
+            //MemberRepo.AllMembers.Add(this);
+
+            //thrower en exception hvis Int værdien er under 1 eller over 3 for membercertification,
+            //try
+            //{
+            //    if (memberCertificationType < 1 || memberCertificationType > 3)
+            //    {
+            //        throw new Exception("Member certificat må ikke være under 1 eller over 3");
+            //    }
+            //}
+            //catch (Exception MemberCertificationError)
+            //{
+            //    Console.WriteLine(MemberCertificationError.Message);
+            //}
+            ////Thrower en exception hvs Int værdien er under 1 eller over 2 for MemberAccesLevel
+            //try
+            //{
+            //    if (memberAccesLevel < 1 || memberAccesLevel > 2)
+            //    {
+            //        throw new Exception("Adgangs niveau ikke fundet!!");
+            //    }
+            //}
+            //catch (Exception MemberAccesLevelError)
+            //{
+            //    Console.WriteLine(MemberAccesLevelError.Message);
+            //}
         }
-       
+
         public override string ToString()
         {
-            //2 Switch statements 
+            
             string memberCertification = "";
             switch (MemberCertificateType)
             {
-                case (int)BoatSize.small:
+                case BoatSize.small:
                     memberCertification = "lille båd";
                     break;
-                case (int)BoatSize.medium:
+                case BoatSize.medium:
                     memberCertification = "Medium båd";
                     break;
-                case (int)BoatSize.large:
+                case BoatSize.large:
                     memberCertification = "Stor båd";
                     break;
                     
@@ -82,16 +87,16 @@ namespace Library
             string memberAcceslevel = "";
             switch (MemberAccesLevel)
             {
-                case (int)Acceslevel.admin:
+                case Acceslevel.admin:
                     memberAcceslevel = "Admin";
                     break;
-                case (int)Acceslevel.medlem:
+                case Acceslevel.medlem:
                     memberAcceslevel = "Medlem";
                     break;
             }
 
 
-            return $"Name: {Name}\nAdresse: {Adresse}\nTelephone number: {TelephoneNumber}\nEmail: {Email}\nBåd certificat: {memberCertification}\nMedlems niveau: {memberAcceslevel}";
+            return $"Name: {Name}\nMember Id: {Id}\nAdresse: {Adresse}\nTelephone number: {TelephoneNumber}\nEmail: {Email}\nBåd certificat: {memberCertification}\nMedlems niveau: {memberAcceslevel}\n";
         }
     
     }

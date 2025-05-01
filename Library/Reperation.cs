@@ -8,10 +8,16 @@ namespace Library
 {
     public class Reperation
     {
+        public int Id {  get; private set; }
         public string Description { get; set; }
         public DateOnly Date {  get; set; }
-        public Reperation(string description, DateOnly date)
-            => (Description, Date) = (description, date);
+        public bool IsRepaired { get; set; }
+        public Reperation(string description, bool isRepaired, Boat boat)
+        {
+            Description = description;
+            IsRepaired = isRepaired;
+            Id = boat.ReperationIdNext;
+        }
 
         public override string ToString()
         {

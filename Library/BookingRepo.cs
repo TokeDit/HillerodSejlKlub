@@ -8,8 +8,8 @@ namespace Library
 {
     public class BookingRepo
     {
-        private List<Booking> allBookings;
-        private List<Booking> filteredBookings;
+        private static List<Booking> allBookings;
+        private static List<Booking> filteredBookings;
         
         public BookingRepo()
         {

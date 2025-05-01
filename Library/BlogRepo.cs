@@ -11,8 +11,8 @@ namespace Library
 {
     public class BlogRepo
     {
-        private List<Blog> blogs;
-        private List<Blog> filteredBlogs;
+        private static List<Blog> blogs;
+        private static List<Blog> filteredBlogs;
 
         public BlogRepo() 
         { 

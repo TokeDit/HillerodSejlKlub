@@ -9,8 +9,8 @@ namespace Library
 {
     public class EventRepo
     {
-        private List<Event> events;
-        private List<Event> filteredEvents;
+        private static List<Event> events;
+        private static List<Event> filteredEvents;
 
         public EventRepo()
         {

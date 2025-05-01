@@ -10,11 +10,13 @@ namespace Library
     {
         private static List<Member> allMembers;
         private static List<Member> filteredMembers;
-        public MemberRepo()
+        public MemberRepo() 
         {
             allMembers = new List<Member>();
             filteredMembers = new List<Member>();
+
         }
+        public List<Member> GetMembers() {  return allMembers; }
         public void AddMember(Member member) { allMembers.Add(member); }
         //public bool DeleteMember(int) { return allMembers.Remove(int); }
 

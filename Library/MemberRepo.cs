@@ -32,21 +32,20 @@ namespace Library
 
 
         //Filters the List by the Unique Id given to a Member
-        public List<Member> FindMemberById(int Id)
+        public Member FilterMemberById(int Id)
         {
-            filteredMembers.Clear();
             foreach (Member m in allMembers)
             {
                 if (m.Id.Equals(Id))
                 {
-                    filteredMembers.Add(m);
+                    return (m) ;
 
                 }
             }
-            return filteredMembers;
+            return null;
         }
         //Filters the list by the argument given in this case Name
-        public List<Member> FindMemberByName(string Name)
+        public List<Member> FilterMemberByName(string Name)
         {
             filteredMembers.Clear();
             foreach (Member m in allMembers)

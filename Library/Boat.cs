@@ -9,7 +9,7 @@ namespace Library
     public class Boat
     {
         private static int idNext = 1;
-        public int id { get; private set; }
+        public int Id { get; private set; }
         public string Name { get; set; }
         public string Model { get; set; }
         public string Type { get; set; }
@@ -24,7 +24,7 @@ namespace Library
 
         public Boat(string name, string model, string type, DateOnly productionDate, int sailingNumber, string motorInformation, int measurement, int minimumCertificationRequirement)
         {
-            id = idNext++; 
+            Id = idNext++; 
             Name = name; 
             Model = model; 
             Type = type; 

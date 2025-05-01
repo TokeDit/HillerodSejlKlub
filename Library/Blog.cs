@@ -18,14 +18,13 @@ namespace Library
         public Event Event {get; set;}
         public Member Writer {get; set;}
 
-        public Blog(string name, DateTime startdate, DateTime enddate, string description, Event e, Member writer)
+        public Blog(string name, DateTime startdate, DateTime enddate, string description, Member writer)
         {
             Id = idNext;
             Name = name;
             StartDate = startdate;
             EndDate = enddate;
             Description = description;
-            Event = e;
             Writer = writer;
             
         }

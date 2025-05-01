@@ -18,6 +18,7 @@ namespace Library
         #region Methods
         //Adds a boat to the list of boats
         public void AddBoat(Boat boat) { boats.Add(boat); }
+        public List<Boat> ToList() { return boats; }
         //Removes a specific boat from the list of boats
         public bool DeleteBoat(Boat boat) { return boats.Remove(boat); }
         public Boat? FindBoatById(int id) 

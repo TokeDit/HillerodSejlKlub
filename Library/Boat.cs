@@ -9,7 +9,7 @@ namespace Library
     public class Boat
     {
         private static int idNext = 1;
-        public int Id { get; private set; }
+        public int Id { get; set; }
         public string Name { get; set; }
         public string Model { get; set; }
         public string Type { get; set; }

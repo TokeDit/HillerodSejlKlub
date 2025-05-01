@@ -31,8 +31,11 @@ public class MainHandler
                 case "list":
                     ValueEventHandler.KeyList(keyValuePair.Value);
                     break;
-                case "tilføj":
+                case "tilfï¿½j":
                     ValueEventHandler.KeyNew(keyValuePair.Value);
+                    break;
+                case "rediger":
+                    ValueEventHandler.KeyEdit(keyValuePair.Value);
                     break;
             }
         }

@@ -3,9 +3,6 @@ using System.Security.Cryptography;
 using Library;
 using System.Text.Json;
 
-#nullable disable
-
-
 
 
 //BoatRepo boats = new BoatRepo();

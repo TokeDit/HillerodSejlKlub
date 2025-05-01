@@ -1,16 +1,18 @@
 using Library;
 using System;
 using System.Threading.Channels;
-using Library;
+
+#nullable disable
+
 
 public static class ValueEventHandler
 {
-    public static BoatRepo boatRepo1 = new BoatRepo();
-    public static MemberRepo memberRepo1 = new MemberRepo();
-    public static EventRepo eventRepo1 = new EventRepo();
-    public static BlogRepo blogRepo1 = new BlogRepo();
-    public static BookingRepo bookingRepo1 = new BookingRepo();
-    
+    static MemberRepo memberRepo1 = new();
+    static BoatRepo boatRepo1 = new BoatRepo();
+    static EventRepo eventRepo1 = new EventRepo();
+    static BlogRepo blogRepo1 = new BlogRepo();
+    static BookingRepo bookingRepo1 = new BookingRepo();
+
 
     public static void KeyList(string value)
     {
@@ -214,7 +216,7 @@ public static class ValueEventHandler
         string guests = Console.ReadLine();
 
         Booking booking1 = new Booking(startDateTime, endDateTime, member, boat, guests);
-
+        bookingRepo1.AddBooking(booking1);
     }
 
 

@@ -8,9 +8,9 @@ namespace Library
 {
     public class Event
     {
-        private static int idNext = 1;
+        private static int idNext = 1; 
         public int Id { get; private set; }
-        public string Name { get; set; }
+        public string EventName { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
         public List<Member> Members { get; set; }
@@ -19,7 +19,7 @@ namespace Library
         public Event(string name, DateTime startdate, DateTime enddate, Member cordCoordinator)
         {
             Id = idNext++;
-            Name = name;
+            EventName = name;
             StartDate = startdate;
             EndDate = enddate;
             Members = new List<Member>();
@@ -28,7 +28,7 @@ namespace Library
 
         public override string ToString()
         {
-            return $"Navn: {Name}\nStart dato: {StartDate}\nSlut dato: {EndDate}\nMembers: {Members}\nKoordinator: {CordCoordinator}.";
+            return $"Navn: {EventName}\nStart dato: {StartDate}\nSlut dato: {EndDate}\nMembers: {Members}\nKoordinator: {CordCoordinator}.";
         }
     }
 }

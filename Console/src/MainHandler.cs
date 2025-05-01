@@ -10,10 +10,30 @@ public class MainHandler
 {
     private static CustomDictionary<string, string> m_dictionary = new CustomDictionary<string, string>();
 
+
+
+
+
+
     public MainHandler()
     {
-        FindKeyValuePair(Console.ReadLine());
-        FindKey();
+       
+        while (true)
+        {
+            Console.WriteLine("Indtast en kommando (eller 'exit' for at afslutte):");
+            string? input = Console.ReadLine();
+
+            if (string.IsNullOrWhiteSpace(input))
+                continue;
+
+            if (input.ToLower() == "exit")
+                break;
+
+            FindKeyValuePair(input);
+            FindKey();
+        }
+        //FindKeyValuePair(Console.ReadLine());
+        //FindKey();
     }
 
     public static Member JSonRead(string filePath)
@@ -28,7 +48,7 @@ public class MainHandler
         {
             switch (keyValuePair.Key.ToLower())
             {
-                case "list":
+                case "se":
                     ValueEventHandler.KeyList(keyValuePair.Value);
                     break;
                 case "tilf�j":
@@ -37,6 +57,11 @@ public class MainHandler
                 case "rediger":
                     ValueEventHandler.KeyEdit(keyValuePair.Value);
                     break;
+                case "fjern":
+                    break;
+                case "�ndre":
+                    break;
+
             }
         }
         m_dictionary.ToList().Clear();

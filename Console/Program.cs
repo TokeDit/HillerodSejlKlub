@@ -4,14 +4,17 @@ using Library;
 using System.Text.Json;
 
 
-BoatRepo boats = new BoatRepo();
-MemberRepo memberRepo = new MemberRepo();
-BookingRepo bookingRepo = new BookingRepo();
-BoatRepo boatRepo = new BoatRepo();
-BlogRepo blogRepo = new BlogRepo();
-EventRepo eventRepo = new EventRepo();
 
-Member member = new Member("foiew", "", "", "", Member.BoatSize.small, Member.Acceslevel.admin);
+//BoatRepo boats = new BoatRepo();
+//MemberRepo memberRepo = new MemberRepo();
+//BookingRepo bookingRepo = new BookingRepo();
+//BoatRepo boatRepo = new BoatRepo();
+//BlogRepo blogRepo = new BlogRepo();
+//EventRepo eventRepo = new EventRepo();
+
+
+
+
 
 //string json = File.ReadAllText("/home/stefan/projects/SchoolShit/HillerodSejlKlub/Data/Member.json");
 // Member member1
@@ -61,3 +64,4 @@ MainHandler main = new MainHandler();
 // Console.WriteLine(bookingRepo.FilterBookingById(1).ToString());
 
 // Console.WriteLine(bookingRepo.FilterBookingById(2).ToString());
+

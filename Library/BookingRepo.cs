@@ -8,8 +8,8 @@ namespace Library
 {
     public class BookingRepo
     {
-        private List<Booking> allBookings;
-        private List<Booking> filteredBookings;
+        private static List<Booking> allBookings;
+        private static List<Booking> filteredBookings;
         
         public BookingRepo()
         {
@@ -17,6 +17,8 @@ namespace Library
             filteredBookings = new List<Booking>();
            
         }
+
+        public List<Booking> GetBookings() { return allBookings; }
         public void AddBooking(Booking booking) { allBookings.Add(booking); }
        
 

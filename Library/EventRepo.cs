@@ -9,8 +9,8 @@ namespace Library
 {
     public class EventRepo
     {
-        private List<Event> events;
-        private List<Event> filteredEvents;
+        private static List<Event> events;
+        private static List<Event> filteredEvents;
 
         public EventRepo()
         {
@@ -18,6 +18,7 @@ namespace Library
             filteredEvents = new List<Event>();
         }
 
+        public List<Event> GetEvents() { return events; }
         public void AddEvent(Event newEvent)
         {
             events.Add(newEvent);
@@ -51,7 +52,7 @@ namespace Library
         {
             foreach (Event e in events)
             {
-                if (e.Name == name)
+                if (e.EventName == name)
                 {
                     filteredEvents.Add(e);
                     return filteredEvents;

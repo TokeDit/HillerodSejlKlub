@@ -22,20 +22,20 @@ namespace Library
         public bool DeleteBoat(Boat boat) { return boats.Remove(boat); }
         public Boat? FindBoatById(int id) 
         {
-            Boat? b = null;
-            foreach (Boat boat in boats) 
+            Boat? boat = null;
+            foreach (Boat b in boats) 
             {
-                if (boat.id == id) b = boat; return b;
+                if (b.Id == id) return boat = b;
 
             }
             
-            if (b == null) 
+            if (boat == null) 
             {
                 string msg = $"Din søgning gav ingen resultater. Vi fandt ingen både med det angivne ID";
                 throw new NoSearhResultException(msg);
             }
             
-            return b;
+            return boat;
             
 
         }

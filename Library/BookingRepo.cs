@@ -34,21 +34,20 @@ namespace Library
 
 
         //Filters the List by the Unique Id given to a Booking
-        public List<Booking> FindBookingById(int Id)
+        public Booking FilterBookingById(int Id)
         {
-            filteredBookings.Clear();
             foreach (Booking m in allBookings)
             {
                 if (m.Id.Equals(Id))
                 {
-                    filteredBookings.Add(m);
+                    return m;
 
                 }
             }
-            return filteredBookings;
+            return null;
         }
         
-        public List<Booking> FindBookingByBoatName(string name)
+        public List<Booking> FilterBookingByBoatName(string name)
         {
             filteredBookings.Clear();
             foreach (Booking b in allBookings)

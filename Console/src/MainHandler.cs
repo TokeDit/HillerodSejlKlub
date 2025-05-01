@@ -48,12 +48,17 @@ public class MainHandler
         {
             switch (keyValuePair.Key.ToLower())
             {
-                case "list":
+                case "se":
                     ValueEventHandler.KeyList(keyValuePair.Value);
                     break;
                 case "tilføj":
                     ValueEventHandler.KeyNew(keyValuePair.Value);
                     break;
+                case "fjern":
+                    break;
+                case "ændre":
+                    break;
+
             }
         }
         m_dictionary.ToList().Clear();

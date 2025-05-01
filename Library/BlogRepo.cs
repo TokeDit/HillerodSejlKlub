@@ -11,7 +11,7 @@ namespace Library
 {
     public class BlogRepo
     {
-        private static  List<Blog> blogs;
+        private static List<Blog> blogs;
         private static List<Blog> filteredBlogs;
 
         public BlogRepo() 
@@ -19,7 +19,7 @@ namespace Library
             blogs = new List<Blog>();
             filteredBlogs = new List<Blog>();
         }
-
+        public List<Blog> GetBlogs() { return blogs; }
         // Method to add a blog
         public void AddBlog(Blog blog)
         {

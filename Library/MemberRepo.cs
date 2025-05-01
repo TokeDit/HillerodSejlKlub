@@ -15,7 +15,9 @@ namespace Library
         {
             allMembers = new List<Member>();
             filteredMembers = new List<Member>();
+
         }
+        public List<Member> GetMembers() {  return allMembers; }
         public void AddMember(Member member) { allMembers.Add(member); }
         //public bool DeleteMember(int) { return allMembers.Remove(int); }
 

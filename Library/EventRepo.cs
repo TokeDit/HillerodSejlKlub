@@ -18,6 +18,7 @@ namespace Library
             filteredEvents = new List<Event>();
         }
 
+        public List<Event> GetEvents() { return events; }
         public void AddEvent(Event newEvent)
         {
             events.Add(newEvent);

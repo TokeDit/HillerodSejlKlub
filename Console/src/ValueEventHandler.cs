@@ -1,11 +1,11 @@
+using Library;
 using System;
 using System.Threading.Channels;
 using Library;
 
-#nullable disable
 public static class ValueEventHandler
 {
-
+    static MemberRepo members = new();
     public static BoatRepo boatRepo1 = new BoatRepo();
     public static MemberRepo memberRepo1 = new MemberRepo();
     public static EventRepo eventRepo1 = new EventRepo();
@@ -17,7 +17,36 @@ public static class ValueEventHandler
     {
         switch (value)
         {
-
+            case "medlemmer":
+                foreach (Member member in members.GetMembers())
+                {
+                    member.ToString();
+                }
+                break;
+            case "både":
+                foreach (Boat boat in boatRepo1.GetBoats())
+                {
+                    boat.ToString();
+                }
+                break;
+            case "blogs":
+                foreach (Blog blog in blogs.GetBlogs())
+                {
+                    blog.ToString();
+                }
+                break;
+            case "begivenheder":
+                foreach (Event e in events.GetEvents())
+                {
+                    e.ToString();
+                }
+                break;
+            case "bookings":
+                foreach (Booking booking in bookings.GetBookings())
+                {
+                    booking.ToString();
+                }
+                break;
         }
     }
 

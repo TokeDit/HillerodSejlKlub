@@ -11,7 +11,7 @@ namespace Library
         private static int idNext = 1;
         public int Id { get; private set; }
         public string Name { get; set; }
-        public string Adresse { get; set; }
+        public string Address { get; set; }
         public string TelephoneNumber { get; set; }
         public string Email { get; set; }
         public BoatSize MemberCertificateType { get; set; }
@@ -29,11 +29,11 @@ namespace Library
             medlem
         }
         
-        public Member(string name, string adresse, string telephoneNumber, string email, BoatSize memberCertificationType, Acceslevel memberAccesLevel)
+        public Member(string name, string address, string telephoneNumber, string email, BoatSize memberCertificationType, Acceslevel memberAccesLevel)
         {
             Id = idNext++;
             Name = name;
-            Adresse = adresse;
+            Address = address;
             TelephoneNumber = telephoneNumber;
             Email = email;
             MemberCertificateType = memberCertificationType;
@@ -96,7 +96,7 @@ namespace Library
             }
 
 
-            return $"Name: {Name}\nMember Id: {Id}\nAdresse: {Adresse}\nTelephone number: {TelephoneNumber}\nEmail: {Email}\nBåd certificat: {memberCertification}\nMedlems niveau: {memberAcceslevel}\n";
+            return $"Name: {Name}\nMember Id: {Id}\nAdresse: {Address}\nTelephone number: {TelephoneNumber}\nEmail: {Email}\nBåd certificat: {memberCertification}\nMedlems niveau: {memberAcceslevel}\n";
         }
     
     }

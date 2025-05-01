@@ -3,6 +3,7 @@ using System.Buffers.Text;
 using System.Reflection.Metadata;
 using System.Reflection.Metadata.Ecma335;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 using Library;
 
 public class MainHandler
@@ -11,16 +12,31 @@ public class MainHandler
 
     public MainHandler()
     {
-        
-        // ({
-        //     return 1;
-        // });
+        FindKeyValuePair("FOIJEWFOI FJWEIOFJEOIEW JFWEIOJFWEOI OIJFEOWIJ");
+        FindKey();
     }
 
-    public static string JSonRead(string filePath)
+    public static Member JSonRead(string filePath)
     {
         string text = File.ReadAllText(filePath);
-        return JsonSerializer.Deserialize<string>(text);        
+        return JsonSerializer.Deserialize<Member>(text);
+    }
+
+    public void FindKey()
+    {
+        foreach (var keyValuePair in m_dictionary.ToList())
+        {
+            switch (keyValuePair.Key.ToLower())
+            {
+                case "list":
+                    ValueEventHandler.KeyList(keyValuePair.Value);
+                    break;
+                case "new":
+                    ValueEventHandler.KeyList(keyValuePair.Value);
+                    break;
+            }
+        }
+        m_dictionary.ToList().Clear();
     }
 
     public void FindKeyValuePair(string input)
@@ -65,11 +81,6 @@ public class MainHandler
                 i = valueEnd;
                 m_dictionary.Add(key, value);
             }
-        }
-
-        foreach (var s in m_dictionary.GetList())
-        {
-            Console.WriteLine(s);
         }
     }
 }

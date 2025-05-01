@@ -1,0 +1,10 @@
+[
+    {
+        "name": "Søren",
+        "address": "København",
+        "telephoneNumber": "434235235",
+        "email": "tokeLoverBoi@gmail.com",
+        "memberCertificationType": "Member.BoatSize.small",
+        "memberAccesLevel": "Member.Acceslevel.admin"
+    }
+]

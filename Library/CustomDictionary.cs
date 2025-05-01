@@ -30,7 +30,7 @@ public class CustomDictionary<TKey, TValue>
         return m_list.ElementAt(index).Value;
     }
 
-    public List<KeyValuePair<TKey, TValue>> GetList()
+    public List<KeyValuePair<TKey, TValue>> ToList()
     {
         return m_list;
     }

@@ -50,7 +50,7 @@ namespace Library
            
         }
         //Filters the list by the argument given in this case Name
-        public List<Member> FindMemberByName(string Name)
+        public List<Member> FilterMemberByName(string Name)
         {
             filteredMembers.Clear();
             foreach (Member m in allMembers)

@@ -11,16 +11,16 @@ Boat boat = new("Clausine", "træ", "flyder", new(2000, 01, 01), 123456, "kører
 
 bool run = true;
 
-while (run)
-{
-    switch (Console.ReadLine())
-    {
-        case "boat":
-            Console.WriteLine(boat);
-            break;
+// while (run)
+// {
+//     switch (Console.ReadLine())
+//     {
+//         case "boat":
+//             Console.WriteLine(boat);
+//             break;
 
-        case "quit":
-            run = false;
-            break;
-    }
-}
+//         case "quit":
+//             run = false;
+//             break;
+//     }
+// }

@@ -23,6 +23,21 @@ public static class ValueEventHandler
     {
         switch (value)
         {
+            case "både":
+                Console.WriteLine(boatRepo1.ReturnListAsString(BoatRepo.AllBoats));
+                break;
+            case "medlemmer":
+                Console.WriteLine(memberRepo1.ReturnListAsString(MemberRepo.AllMembers));
+                break;
+            case "blogs":
+                Console.WriteLine(blogRepo1.ReturnListAsString(BlogRepo.AllBlogs));
+                break;
+            case "begivenheder":
+                Console.WriteLine(boatRepo1.ReturnListAsString(BoatRepo.AllBoats));
+                break;
+            case "bookings":
+                Console.WriteLine(boatRepo1.ReturnListAsString(BoatRepo.AllBoats));
+                break;
 
         }
     }
@@ -168,23 +183,23 @@ public static class ValueEventHandler
         Console.WriteLine("Model");
         string model = Console.ReadLine();
         
-        Console.WriteLine("B�d type");
+        Console.WriteLine("Båd type");
         string type = Console.ReadLine();
         
         Console.WriteLine("Sejlnummer");
         int sailingNumber = int.Parse(Console.ReadLine());
 
-        Console.WriteLine("Bygge�r (dd-MM-����)");
+        Console.WriteLine("Byggeår (dd-MM-ÅÅÅÅ)");
         string creationInput = Console.ReadLine();
         DateOnly creationDateTime = DateOnly.ParseExact(creationInput, "dd-MM-yyyy", null);
        
         Console.WriteLine("Motornummer");
         string motorInformation = Console.ReadLine();
         
-        Console.WriteLine("L�ngde");
+        Console.WriteLine("Længde");
         int measurement = int.Parse(Console.ReadLine());
         
-        Console.WriteLine("Certificat krav\nLille b�d = 1\nMellem b�d = 2\nStor b�d = 3");
+        Console.WriteLine("Certificat krav\nLille båd = 1\nMellem båd = 2\nStor båd = 3");
         int minmumCertificationRequirement = int.Parse(Console.ReadLine());
 
         Boat boat1 = new Boat(boatName, model, type, creationDateTime, sailingNumber, motorInformation, measurement, minmumCertificationRequirement);
@@ -207,7 +222,7 @@ public static class ValueEventHandler
         Console.WriteLine("Adgangs niveau\nAdmin = 1\nMedlem = 2");
         Member.Acceslevel AccesLevel = (Member.Acceslevel)int.Parse(Console.ReadLine());
         
-        Console.WriteLine("Certificat type\nLille b�d = 1\nMellem b�d = 2\nStor b�d = 3");
+        Console.WriteLine("Certificat type\nLille båd = 1\nMellem båd = 2\nStor båd = 3");
         Member.BoatSize boatSize = (Member.BoatSize)int.Parse(Console.ReadLine());
         
 
@@ -219,11 +234,11 @@ public static class ValueEventHandler
         Console.WriteLine("Navn");
         string eventName = Console.ReadLine();
         
-        Console.WriteLine("Indtast start dato og tid (dd-MM-���� HH:mm)");
+        Console.WriteLine("Indtast start dato og tid (dd-MM-ÅÅÅÅ HH:mm)");
         string startInput = Console.ReadLine();
         DateTime startDateTime = DateTime.ParseExact(startInput, "dd-MM-yyyy HH:mm", null);
 
-        Console.WriteLine("Indtast slut dato og tid (dd-MM-���� HH:mm)");
+        Console.WriteLine("Indtast slut dato og tid (dd-MM-ÅÅÅÅ HH:mm)");
         string endInput = Console.ReadLine();
         DateTime endDateTime = DateTime.ParseExact(endInput, "dd-MM-yyyy HH:mm", null);
 
@@ -240,7 +255,7 @@ public static class ValueEventHandler
         Console.WriteLine("Navn");
         string blogTitle = Console.ReadLine();
 
-        Console.WriteLine("Indtast oprettelses dato (dd-MM-����)");
+        Console.WriteLine("Indtast oprettelses dato (dd-MM-ÅÅÅÅ)");
         string creationInput = Console.ReadLine();
         DateOnly creationDateOnly = DateOnly.ParseExact(creationInput, "dd-MM-yyyy", null);
 
@@ -271,23 +286,23 @@ public static class ValueEventHandler
     }
     private static void CreateNewBooking()
     {
-        Console.WriteLine("hvilken b�d vil du booke?");
+        Console.WriteLine("hvilken båd vil du booke?");
         int boatId = int.Parse(Console.ReadLine());
         Boat boat = boatRepo1.FindBoatById(boatId);
 
-        Console.WriteLine("Hvem booker b�den?");
+        Console.WriteLine("Hvem booker båden?");
         int memberId = int.Parse(Console.ReadLine());
         Member member = memberRepo1.FindMemberById(memberId); 
 
-        Console.WriteLine("Hvorn�r vil du booke b�den? (dd-MM-���� HH:mm)");
+        Console.WriteLine("Hvornår vil du booke båden? (dd-MM-ÅÅÅÅ HH:mm)");
         string startInput = Console.ReadLine();
         DateTime startDateTime = DateTime.ParseExact(startInput, "dd-MM-yyyy HH:mm", null);
 
-        Console.WriteLine("Hvorn�r vil du returnere b�den? (dd-MM-���� HH:mm)");
+        Console.WriteLine("Hvornår vil du returnere b�den? (dd-MM-ÅÅÅÅ HH:mm)");
         string endInput = Console.ReadLine();
         DateTime endDateTime = DateTime.ParseExact(endInput, "dd-MM-yyyy HH:mm", null);
 
-        Console.WriteLine("Skal andre med p� b�den? hvis ja s� skriv Navn og Adresse");
+        Console.WriteLine("Skal andre med på båden? hvis ja så skriv Navn og Adresse");
         string guests = Console.ReadLine();
 
         Booking booking1 = new Booking(startDateTime, endDateTime, member, boat, guests);

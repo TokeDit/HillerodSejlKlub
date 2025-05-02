@@ -11,7 +11,7 @@ namespace Library
 {
     public class BlogRepo
     {
-        public static List<Blog> AllBlogs { get; private set; };
+        public static List<Blog> AllBlogs { get; private set; }
         private static List<Blog> filteredBlogs;
 
         public BlogRepo() 
@@ -81,6 +81,16 @@ namespace Library
                 return true;
             }
             return false;
+        }
+
+        public string ReturnListAsString(List<Blog> allBlogs)
+        {
+            string s = "";
+            foreach (Blog blog in AllBlogs)
+            {
+                s += blog.ToString() + "\n";
+            }
+            return s;
         }
     }
 }

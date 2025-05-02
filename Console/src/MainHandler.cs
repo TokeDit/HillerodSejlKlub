@@ -51,7 +51,7 @@ public class MainHandler
                 case "se":
                     ValueEventHandler.KeyList(keyValuePair.Value);
                     break;
-                case "tilf�j":
+                case "tilfoj":
                     ValueEventHandler.KeyNew(keyValuePair.Value);
                     break;
                 case "rediger":
@@ -59,7 +59,7 @@ public class MainHandler
                     break;
                 case "fjern":
                     break;
-                case "�ndre":
+                case "ændr":
                     break;
 
             }

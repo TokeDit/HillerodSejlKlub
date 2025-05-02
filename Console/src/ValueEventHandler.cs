@@ -11,11 +11,6 @@ using static Library.Member;
 
 public static class ValueEventHandler
 {
-    public static BoatRepo boatRepo1 = new BoatRepo();
-    public static BlogRepo blogRepo1 = new BlogRepo();
-    public static BookingRepo bookingRepo1 = new BookingRepo();
-    public static EventRepo eventRepo1 = new EventRepo();
-    public static MemberRepo memberRepo1 = new MemberRepo();
 
     private static bool m_eventSuccess = false; 
     
@@ -25,19 +20,19 @@ public static class ValueEventHandler
         switch (value)
         {
             case "både":
-                Console.WriteLine(boatRepo1.ReturnListAsString(BoatRepo.AllBoats));
+                Console.WriteLine(BoatRepo.ReturnListAsString(BoatRepo.AllBoats));
                 break;
             case "medlemmer":
-                Console.WriteLine(memberRepo1.ReturnListAsString(MemberRepo.AllMembers));
+                Console.WriteLine(MemberRepo.ReturnListAsString(MemberRepo.AllMembers));
                 break;
             case "blogs":
-                Console.WriteLine(blogRepo1.ReturnListAsString(BlogRepo.AllBlogs));
+                Console.WriteLine(BlogRepo.ReturnListAsString(BlogRepo.AllBlogs));
                 break;
             case "begivenheder":
-                Console.WriteLine(boatRepo1.ReturnListAsString(BoatRepo.AllBoats));
+                Console.WriteLine(BoatRepo.ReturnListAsString(BoatRepo.AllBoats));
                 break;
             case "bookings":
-                Console.WriteLine(boatRepo1.ReturnListAsString(BoatRepo.AllBoats));
+                Console.WriteLine(BoatRepo.ReturnListAsString(BoatRepo.AllBoats));
                 break;
 
         }
@@ -100,7 +95,7 @@ public static class ValueEventHandler
     // Takes the boats and changes one value, input is taken from the console
     private static void EditBoat()
     {
-        boatRepo1.AddBoat(new Boat("fewfwe", "jgewoi", "jgwoei", new DateOnly(2000, 2, 12), 1, "fw", 1, 1));
+        BoatRepo.AddBoat(new Boat("fewfwe", "jgewoi", "jgwoei", new DateOnly(2000, 2, 12), 1, "fw", 1, 1));
         if (BoatRepo.AllBoats.Count() == 0)
         {
             throw new ArgumentException("Der er ikke nogle både");
@@ -204,7 +199,7 @@ public static class ValueEventHandler
         int minmumCertificationRequirement = int.Parse(Console.ReadLine());
 
         Boat boat1 = new Boat(boatName, model, type, creationDateTime, sailingNumber, motorInformation, measurement, minmumCertificationRequirement);
-        boatRepo1.AddBoat(boat1);
+        BoatRepo.AddBoat(boat1);
     }
     private static void CreateNewMember()
     {
@@ -228,7 +223,7 @@ public static class ValueEventHandler
         
 
         Member member1 = new Member(Memebername, address, phoneNumber, email, boatSize, AccesLevel);
-        memberRepo1.AddMember(member1);
+        MemberRepo.AddMember(member1);
     }
     private static void CreateNewEvent()
     {
@@ -245,10 +240,10 @@ public static class ValueEventHandler
 
         Console.WriteLine("Event organisator");
         int organisatorId = int.Parse(Console.ReadLine());
-        Member eventOrganisator = memberRepo1.FindMemberById(organisatorId);
+        Member eventOrganisator = MemberRepo.FindMemberById(organisatorId);
 
         Event event1 = new Event(eventName, startDateTime, endDateTime, eventOrganisator);
-        eventRepo1.AddEvent(event1);
+        EventRepo.AddEvent(event1);
 
     }
     private static void CreateNewBlog()
@@ -265,7 +260,7 @@ public static class ValueEventHandler
 
         Console.WriteLine("Skribent");
         string blogWriterName = Console.ReadLine();
-        Member blogWriter = memberRepo1.FindMemberById(int.Parse(blogWriterName));
+        Member blogWriter = MemberRepo.FindMemberById(int.Parse(blogWriterName));
 
         Console.WriteLine("Event");
         string eventInput = Console.ReadLine();
@@ -274,7 +269,7 @@ public static class ValueEventHandler
         if (!string.IsNullOrEmpty(eventInput))
         {
             int eventId = int.Parse(eventInput);
-            blogEvent = eventRepo1.GetEventById(eventId);
+            blogEvent = EventRepo.GetEventById(eventId);
         }
 
         Blog blog1 = new Blog(blogTitle, creationDateOnly, description, blogWriter);
@@ -283,17 +278,17 @@ public static class ValueEventHandler
         {
             blog1.RelatedEvent = blogEvent;
         }
-        blogRepo1.AddBlog(blog1);
+        BlogRepo.AddBlog(blog1);
     }
     private static void CreateNewBooking()
     {
         Console.WriteLine("hvilken båd vil du booke?");
         int boatId = int.Parse(Console.ReadLine());
-        Boat boat = boatRepo1.FindBoatById(boatId);
+        Boat boat = BoatRepo.FindBoatById(boatId);
 
         Console.WriteLine("Hvem booker båden?");
         int memberId = int.Parse(Console.ReadLine());
-        Member member = memberRepo1.FindMemberById(memberId); 
+        Member member = MemberRepo.FindMemberById(memberId); 
 
         Console.WriteLine("Hvornår vil du booke båden? (dd-MM-ÅÅÅÅ HH:mm)");
         string startInput = Console.ReadLine();
@@ -307,7 +302,7 @@ public static class ValueEventHandler
         string guests = Console.ReadLine();
 
         Booking booking1 = new Booking(startDateTime, endDateTime, member, boat, guests);
-        bookingRepo1.AddBooking(booking1);
+        BookingRepo.AddBooking(booking1);
     }
 
     public static void KeyDelete(string value)
@@ -431,10 +426,10 @@ public static class ValueEventHandler
     private static void DelteBooking()
     {
         Console.WriteLine("Båd navn");
-        string Boat.Name = Console.ReadLine();
+        //string Boat.Name = Console.ReadLine();
 
         Console.WriteLine("Medlem");
-        string Member.Name = Console.ReadLine();
+        //string Member.Name = Console.ReadLine();
 
         Console.WriteLine("Start dato");
         int DateTime = int.Parse(Console.ReadLine());
@@ -446,11 +441,11 @@ public static class ValueEventHandler
         string Guests = Console.ReadLine();
     }
 
-    private static void DeleteBoat()
-    {
-        Console.WriteLine("Indtast bådens ID for at slette den:");
-        int boatId = int.Parse(Console.ReadLine());
-        Boat boat = boatRepo1.FindBoatById(boatId);
-        BoatRepo.AllBoats.Remove(boat);
-    }
+    //private static void DeleteBoat()
+    //{
+    //    Console.WriteLine("Indtast bådens ID for at slette den:");
+    //    int boatId = int.Parse(Console.ReadLine());
+    //    Boat boat = boatRepo1.FindBoatById(boatId);
+    //    BoatRepo.AllBoats.Remove(boat);
+    //}
 }

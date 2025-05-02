@@ -6,26 +6,21 @@ using System.Threading.Tasks;
 
 namespace Library
 {
-    public class BoatRepo
+    public static class BoatRepo
     {
-        public static List<Boat> AllBoats { get; private set; }
-        private static List<Boat> filteredBoats;
-
-       
-        public BoatRepo()
-        {
-            AllBoats = new List<Boat>()
+        public static List<Boat> AllBoats { get; private set; } = new List<Boat>()
             {
                 new("Tetra", "Tera", "jolle", new(2000, 10, 01), 12345678, "Ingen motor, den har sejl", 3, 0),
                 new("Ferva", "Feva", "moderne jolle", new(2010, 9, 26), 87654321, "Har mare sejl", 4, 1)
             };
-            filteredBoats = new List<Boat>();
-        }
+        private static List<Boat> filteredBoats = new List<Boat>();
+
+
         #region Methods
       
-        public void AddBoat(Boat boat) { AllBoats.Add(boat); }
-        public bool DeleteBoat(Boat boat) { return AllBoats.Remove(boat); }
-        public Boat? FindBoatById(int id) 
+        public static void AddBoat(Boat boat) { AllBoats.Add(boat); }
+        public static bool DeleteBoat(Boat boat) { return AllBoats.Remove(boat); }
+        public static Boat? FindBoatById(int id) 
         {
             Boat? boat = null;
             foreach (Boat b in AllBoats) 
@@ -45,7 +40,7 @@ namespace Library
 
         }
         // Finds
-        public List<Boat> FilterBoatByName(string name)
+        public static List<Boat> FilterBoatByName(string name)
         {
             filteredBoats.Clear();
             foreach (Boat boat in AllBoats)
@@ -60,7 +55,7 @@ namespace Library
             return filteredBoats;
         }
         // Returns all objects from the given list as a string
-        public string ReturnListAsString(List<Boat> boats)
+        public static string ReturnListAsString(List<Boat> boats)
         {
             string s = "";
             foreach (Boat boat in boats)

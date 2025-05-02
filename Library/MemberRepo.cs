@@ -6,27 +6,22 @@ using System.Threading.Tasks;
 
 namespace Library 
 {
-    public class MemberRepo
+    public static class MemberRepo
     {
-        public static List<Member> AllMembers { get; private set; }
-        private static List<Member> filteredMembers;
-
-
-        public MemberRepo()
-        {
-            AllMembers = new List<Member>()
+        public static List<Member> AllMembers { get; private set; } = new List<Member>()
             {
                 new Member("Toke", "Holte", "12345678", "Toke@toke.toke", Member.BoatSize.large, Member.Acceslevel.admin),
                 new Member("Lars", "Albertslund", "87654321", "Lars@lars.lars", Member.BoatSize.small, Member.Acceslevel.medlem),
                 new Member("Lars", "Husum", "45678912", "LarsLars@larslars.lars", Member.BoatSize.medium, Member.Acceslevel.admin)
             };
-            filteredMembers = new List<Member>();
+        private static List<Member> filteredMembers = new List<Member>();
 
-        }
-        public void AddMember(Member member) { AllMembers.Add(member); }
+
+        
+        public static void AddMember(Member member) { AllMembers.Add(member); }
         //public bool DeleteMember(int) { return allMembers.Remove(int); }
 
-        public bool DeleteMember(int id)
+        public static bool DeleteMember(int id)
         {
             foreach (Member m in AllMembers)
             {
@@ -39,7 +34,7 @@ namespace Library
         }
 
         //Filters the List by the Unique Id given to a Member
-        public Member? FindMemberById(int Id)
+        public static Member? FindMemberById(int Id)
         {
             Member? member = null;
             foreach (Member m in AllMembers)
@@ -58,7 +53,7 @@ namespace Library
            
         }
         //Filters the list by the argument given in this case Name
-        public List<Member> FilterMemberByName(string Name)
+        public static List<Member> FilterMemberByName(string Name)
         {
             filteredMembers.Clear();
             foreach (Member m in AllMembers)
@@ -77,7 +72,7 @@ namespace Library
             return filteredMembers;
         }
         //Returns a given list from the repo as a string.
-        public string ReturnListAsString(List<Member> members)
+        public static string ReturnListAsString(List<Member> members)
         {
             string s = "";
             foreach (Member m in members)

@@ -7,24 +7,20 @@ using System.Threading.Tasks;
 
 namespace Library
 {
-    public class EventRepo
+    public static class EventRepo
     {
-        public static List<Event> AllEvents { get; private set; }
-        private static List<Event> filteredEvents;
+        public static List<Event> AllEvents { get; private set; } = new List<Event>();
+        private static List<Event> filteredEvents = new List<Event>();
 
-        public EventRepo()
-        {
-            AllEvents = new List<Event>();
-            filteredEvents = new List<Event>();
-        }
+       
 
-        public void AddEvent(Event newEvent)
+        public static void AddEvent(Event newEvent)
         {
             AllEvents.Add(newEvent);
         }
 
 
-        public Event? GetEventById(int id)
+        public static Event? GetEventById(int id)
         {
             Event? ev = null;
             foreach (Event e in AllEvents)
@@ -43,7 +39,7 @@ namespace Library
             return ev;
         }
 
-        public List<Event> GetEventByName(string name)
+        public static List<Event> GetEventByName(string name)
         {
             foreach (Event e in AllEvents)
             {
@@ -61,13 +57,13 @@ namespace Library
             return filteredEvents;
         }
 
-        public void UpdateEvent(Event updatedEvent)
+        public static void UpdateEvent(Event updatedEvent)
         {
             RemoveEvent(updatedEvent.Id);
             AddEvent(updatedEvent);
         }
 
-        public bool RemoveEvent(int id)
+        public static bool RemoveEvent(int id)
         {
             Event eventToRemove = GetEventById(id);
             if (eventToRemove != null)

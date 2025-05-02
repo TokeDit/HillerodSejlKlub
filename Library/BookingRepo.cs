@@ -6,22 +6,16 @@ using System.Threading.Tasks;
 
 namespace Library
 {
-    public class BookingRepo
+    public static class BookingRepo
     {
-        public static List<Booking> AllBookings { get; private set; }
-        private static List<Booking> filteredBookings;
+        public static List<Booking> AllBookings { get; private set; } = new List<Booking>();
+        private static List<Booking> filteredBookings = new List<Booking>();
         
-        public BookingRepo()
-        {
-            AllBookings = new List<Booking>();
-            filteredBookings = new List<Booking>();
-           
-        }
-
-        public void AddBooking(Booking booking) { AllBookings.Add(booking); }
+     
+        public static void AddBooking(Booking booking) { AllBookings.Add(booking); }
        
 
-        public bool DelteBooking(int id)
+        public static bool DelteBooking(int id)
         {
             foreach (Booking m in AllBookings)
             {
@@ -35,7 +29,7 @@ namespace Library
 
 
         //Filters the List by the Unique Id given to a Booking
-        public Booking? FilterBookingById(int Id)
+        public static Booking? FilterBookingById(int Id)
         {
             Booking? booking = null;
             foreach (Booking b in AllBookings)
@@ -54,7 +48,7 @@ namespace Library
             return booking;
         }
         
-        public List<Booking> FilterBookingByBoatName(string name)
+        public static List<Booking> FilterBookingByBoatName(string name)
         {
             filteredBookings.Clear();
             foreach (Booking b in AllBookings)
@@ -73,7 +67,7 @@ namespace Library
         }
         
         //Returns list as a string.
-        public string ReturnListAsString(List<Booking> booking)
+        public static string ReturnListAsString(List<Booking> booking)
         {
             string s = "";
             foreach (Booking m in booking)

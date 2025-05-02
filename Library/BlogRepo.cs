@@ -9,28 +9,23 @@ using System.Threading.Tasks;
 
 namespace Library
 {
-    public class BlogRepo
+    public static class BlogRepo
     {
-        public static List<Blog> AllBlogs { get; private set; }
-        private static List<Blog> filteredBlogs;
+        public static List<Blog> AllBlogs { get; private set; } = new List<Blog>();
+        private static List<Blog> filteredBlogs = new List<Blog>();
 
-        public BlogRepo() 
-        { 
-            AllBlogs = new List<Blog>();
-            filteredBlogs = new List<Blog>();
-        }
         
-        public void AddBlog(Blog blog)
+        public static void AddBlog(Blog blog)
         {
             AllBlogs.Add(blog);
         }
 
-        public List<Blog> GetAllBlogs()
+        public static List<Blog> GetAllBlogs()
         {
             return AllBlogs;
         }
 
-        private Blog? GetBlogById(int id)
+        private static Blog? GetBlogById(int id)
         {
             Blog? blog = null;
             foreach (Blog b in AllBlogs)
@@ -48,7 +43,7 @@ namespace Library
             return blog;
         }
 
-        public List<Blog> GetBlogByName(string name)
+        public static List<Blog> GetBlogByName(string name)
         {
             foreach(Blog blog in AllBlogs)
             {
@@ -66,13 +61,13 @@ namespace Library
             return filteredBlogs;
         }
 
-      public void UpdateBlog(Blog updadedBlog)
+      public static void UpdateBlog(Blog updadedBlog)
         {
             RemoveBlog(updadedBlog.Id);
             AddBlog(updadedBlog);
         }
 
-        public bool RemoveBlog(int id)
+        public static bool RemoveBlog(int id)
         {
             Blog blogToRemove = GetBlogById(id);
             if (blogToRemove != null)
@@ -83,7 +78,7 @@ namespace Library
             return false;
         }
 
-        public string ReturnListAsString(List<Blog> allBlogs)
+        public static string ReturnListAsString(List<Blog> allBlogs)
         {
             string s = "";
             foreach (Blog blog in AllBlogs)

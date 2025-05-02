@@ -11,30 +11,29 @@ namespace Library
 {
     public class BlogRepo
     {
-        private static List<Blog> blogs;
+        public static List<Blog> AllBlogs { get; private set; }
         private static List<Blog> filteredBlogs;
 
         public BlogRepo() 
         { 
-            blogs = new List<Blog>();
+            AllBlogs = new List<Blog>();
             filteredBlogs = new List<Blog>();
         }
-        public List<Blog> GetBlogs() { return blogs; }
-        // Method to add a blog
+        
         public void AddBlog(Blog blog)
         {
-            blogs.Add(blog);
+            AllBlogs.Add(blog);
         }
 
         public List<Blog> GetAllBlogs()
         {
-            return blogs;
+            return AllBlogs;
         }
 
         private Blog? GetBlogById(int id)
         {
             Blog? blog = null;
-            foreach (Blog b in blogs)
+            foreach (Blog b in AllBlogs)
             {
                 if (b.Id == id)
                 {
@@ -51,7 +50,7 @@ namespace Library
 
         public List<Blog> GetBlogByName(string name)
         {
-            foreach(Blog blog in blogs)
+            foreach(Blog blog in AllBlogs)
             {
                 if (blog.Title == name)
                 {
@@ -78,10 +77,20 @@ namespace Library
             Blog blogToRemove = GetBlogById(id);
             if (blogToRemove != null)
             {
-                blogs.Remove(blogToRemove);
+                AllBlogs.Remove(blogToRemove);
                 return true;
             }
             return false;
+        }
+
+        public string ReturnListAsString(List<Blog> allBlogs)
+        {
+            string s = "";
+            foreach (Blog blog in AllBlogs)
+            {
+                s += blog.ToString() + "\n";
+            }
+            return s;
         }
     }
 }

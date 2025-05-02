@@ -23,6 +23,21 @@ public static class ValueEventHandler
     {
         switch (value)
         {
+            case "både":
+                Console.WriteLine(boatRepo1.ReturnListAsString(BoatRepo.AllBoats));
+                break;
+            case "medlemmer":
+                Console.WriteLine(memberRepo1.ReturnListAsString(MemberRepo.AllMembers));
+                break;
+            case "blogs":
+                Console.WriteLine(blogRepo1.ReturnListAsString(BlogRepo.AllBlogs));
+                break;
+            case "begivenheder":
+                Console.WriteLine(boatRepo1.ReturnListAsString(BoatRepo.AllBoats));
+                break;
+            case "bookings":
+                Console.WriteLine(boatRepo1.ReturnListAsString(BoatRepo.AllBoats));
+                break;
 
         }
     }
@@ -85,13 +100,13 @@ public static class ValueEventHandler
     private static void EditBoat()
     {
         boatRepo1.AddBoat(new Boat("fewfwe", "jgewoi", "jgwoei", new DateOnly(2000, 2, 12), 1, "fw", 1, 1));
-        if (boatRepo1.ToList().Count() == 0)
+        if (BoatRepo.AllBoats.Count() == 0)
         {
             throw new ArgumentException("Der er ikke nogle både");
         }
         
         Console.WriteLine("--------------");
-        foreach (var boat in boatRepo1.ToList())
+        foreach (var boat in BoatRepo.AllBoats)
         {
             Console.WriteLine($"Både: {boat.Id}\nnavn: {boat.Name}\n--------------");
         }
@@ -103,7 +118,7 @@ public static class ValueEventHandler
 
         bool idFound = false;
 
-        foreach (var boat in boatRepo1.ToList())
+        foreach (var boat in BoatRepo.AllBoats)
         {
             if (boat.Id == selectedId)
             {
@@ -184,7 +199,7 @@ public static class ValueEventHandler
         Console.WriteLine("Længde");
         int measurement = int.Parse(Console.ReadLine());
         
-        Console.WriteLine("Certificat krav\nLille båd = 1\nMellem b�d = 2\nStor båd = 3");
+        Console.WriteLine("Certificat krav\nLille båd = 1\nMellem båd = 2\nStor båd = 3");
         int minmumCertificationRequirement = int.Parse(Console.ReadLine());
 
         Boat boat1 = new Boat(boatName, model, type, creationDateTime, sailingNumber, motorInformation, measurement, minmumCertificationRequirement);
@@ -283,7 +298,7 @@ public static class ValueEventHandler
         string startInput = Console.ReadLine();
         DateTime startDateTime = DateTime.ParseExact(startInput, "dd-MM-yyyy HH:mm", null);
 
-        Console.WriteLine("Hvornår vil du returnere båden? (dd-MM-ÅÅÅÅ HH:mm)");
+        Console.WriteLine("Hvornår vil du returnere b�den? (dd-MM-ÅÅÅÅ HH:mm)");
         string endInput = Console.ReadLine();
         DateTime endDateTime = DateTime.ParseExact(endInput, "dd-MM-yyyy HH:mm", null);
 

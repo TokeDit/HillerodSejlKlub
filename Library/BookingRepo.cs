@@ -8,27 +8,26 @@ namespace Library
 {
     public class BookingRepo
     {
-        private static List<Booking> allBookings;
+        public static List<Booking> AllBookings { get; private set; }
         private static List<Booking> filteredBookings;
         
         public BookingRepo()
         {
-            allBookings = new List<Booking>();
+            AllBookings = new List<Booking>();
             filteredBookings = new List<Booking>();
            
         }
 
-        public List<Booking> GetBookings() { return allBookings; }
-        public void AddBooking(Booking booking) { allBookings.Add(booking); }
+        public void AddBooking(Booking booking) { AllBookings.Add(booking); }
        
 
         public bool DelteBooking(int id)
         {
-            foreach (Booking m in allBookings)
+            foreach (Booking m in AllBookings)
             {
                 if (m.Id.Equals(id))
                 {
-                    return allBookings.Remove(m);
+                    return AllBookings.Remove(m);
                 }
             }
             return false;
@@ -39,7 +38,7 @@ namespace Library
         public Booking? FilterBookingById(int Id)
         {
             Booking? booking = null;
-            foreach (Booking b in allBookings)
+            foreach (Booking b in AllBookings)
             {
                 if (b.Id.Equals(Id))
                 {
@@ -58,7 +57,7 @@ namespace Library
         public List<Booking> FilterBookingByBoatName(string name)
         {
             filteredBookings.Clear();
-            foreach (Booking b in allBookings)
+            foreach (Booking b in AllBookings)
             {
                 if (b.Boat.Name.ToLower().Equals(name))
                 {

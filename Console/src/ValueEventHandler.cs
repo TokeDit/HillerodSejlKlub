@@ -11,6 +11,10 @@ public static class ValueEventHandler
 {
 
     public static BoatRepo boatRepo1 = new BoatRepo();
+    public static BlogRepo blogRepo1 = new BlogRepo();
+    public static BookingRepo bookingRepo1 = new BookingRepo();
+    public static EventRepo eventRepo1 = new EventRepo();
+    public static MemberRepo memberRepo1 = new MemberRepo();
 
     private static bool m_eventSuccess = false; 
     

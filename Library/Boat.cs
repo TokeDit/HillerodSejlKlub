@@ -81,7 +81,7 @@ namespace Library
         }
         public override string ToString()
         {
-            return $"Navn: {Name}\nModel: {Model}\nType: {Type}\nProduktions dato: {ProductionDate}\nSejlnummer: {SailingNumber}\nMotor information: {MotorInformation}\nMål i fod: {Measurement}\nMinimum certifikat krav: Level {MinimumCertificationRequirement}\n";
+            return $"ID: {Id}\nNavn: {Name}\nModel: {Model}\nType: {Type}\nProduktions dato: {ProductionDate}\nSejlnummer: {SailingNumber}\nMotor information: {MotorInformation}\nMål i meter: {Measurement}\nMinimum certifikat krav: Level {MinimumCertificationRequirement}\n";
         }
 
     }

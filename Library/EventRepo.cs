@@ -9,7 +9,11 @@ namespace Library
 {
     public static class EventRepo
     {
-        public static List<Event> AllEvents { get; private set; } = new List<Event>();
+        public static List<Event> AllEvents { get; private set; } = new List<Event>()
+        {
+            new("Firma Fest", new DateTime(2025, 05, 09, 17, 00, 00), new DateTime(2025, 05, 09, 23, 00, 00), MemberRepo.FindMemberById(1)),
+            new("Navngivning af ny båd", new DateTime(2025, 05, 08, 17, 00, 00), new DateTime(2025, 05, 08, 18, 00, 00), MemberRepo.FindMemberById(1))
+        };
         private static List<Event> filteredEvents = new List<Event>();
 
        
@@ -72,6 +76,15 @@ namespace Library
                 return true;
             }
             return false;
+        }
+        public static string ReturnListAsString(List<Event> allEvents)
+        {
+            string s = "";
+            foreach (Event e in AllEvents)
+            {
+                s += e.ToString() + "\n";
+            }
+            return s;
         }
     }
 }

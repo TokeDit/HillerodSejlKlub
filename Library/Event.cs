@@ -28,7 +28,7 @@ namespace Library
 
         public override string ToString()
         {
-            return $"Navn: {EventName}\nStart dato: {StartDate}\nSlut dato: {EndDate}\nMembers: {Members}\nKoordinator: {CordCoordinator}.";
+            return $"ID: {Id}\nNavn: {EventName}\nStart dato: {StartDate}\nSlut dato: {EndDate}\nMembers: {Members}\nKoordinator: {CordCoordinator}.\n";
         }
     }
 }

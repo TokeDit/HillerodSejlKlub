@@ -8,13 +8,13 @@ namespace Library
 {
     public class MemberRepo
     {
-        private static List<Member> allMembers;
+        public static List<Member> AllMembers { get; private set; }
         private static List<Member> filteredMembers;
 
 
         public MemberRepo()
         {
-            allMembers = new List<Member>()
+            AllMembers = new List<Member>()
             {
                 new Member("Toke", "Holte", "12345678", "Toke@toke.toke", Member.BoatSize.large, Member.Acceslevel.admin),
                 new Member("Lars", "Albertslund", "87654321", "Lars@lars.lars", Member.BoatSize.small, Member.Acceslevel.medlem),
@@ -23,17 +23,16 @@ namespace Library
             filteredMembers = new List<Member>();
 
         }
-        public List<Member> GetMembers() {  return allMembers; }
-        public void AddMember(Member member) { allMembers.Add(member); }
+        public void AddMember(Member member) { AllMembers.Add(member); }
         //public bool DeleteMember(int) { return allMembers.Remove(int); }
 
         public bool DeleteMember(int id)
         {
-            foreach (Member m in allMembers)
+            foreach (Member m in AllMembers)
             {
                 if (m.Id.Equals(id))
                 {
-                    return allMembers.Remove(m);
+                    return AllMembers.Remove(m);
                 }
             }
             return false;
@@ -43,7 +42,7 @@ namespace Library
         public Member? FindMemberById(int Id)
         {
             Member? member = null;
-            foreach (Member m in allMembers)
+            foreach (Member m in AllMembers)
             {
                 if (m.Id.Equals(Id))
                 {
@@ -62,7 +61,7 @@ namespace Library
         public List<Member> FilterMemberByName(string Name)
         {
             filteredMembers.Clear();
-            foreach (Member m in allMembers)
+            foreach (Member m in AllMembers)
             {
                 if (m.Name.ToLower().Equals(Name.ToLower()))
                 {

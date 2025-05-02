@@ -59,7 +59,7 @@ public class MainHandler
                     break;
                 case "fjern":
                     break;
-                case "ændre":
+                case "ændr":
                     break;
 
             }

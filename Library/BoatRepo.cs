@@ -8,13 +8,13 @@ namespace Library
 {
     public class BoatRepo
     {
-        private static List<Boat> boats;
+        public static List<Boat> AllBoats { get; private set; }
         private static List<Boat> filteredBoats;
 
        
         public BoatRepo()
         {
-            boats = new List<Boat>()
+            AllBoats = new List<Boat>()
             {
                 new("Tetra", "Tera", "jolle", new(2000, 10, 01), 12345678, "Ingen motor, den har sejl", 3, 0),
                 new("Ferva", "Feva", "moderne jolle", new(2010, 9, 26), 87654321, "Har mare sejl", 4, 1)
@@ -22,16 +22,13 @@ namespace Library
             filteredBoats = new List<Boat>();
         }
         #region Methods
-        public List<Boat> GetBoats() { return boats; }
-        //Adds a boat to the list of boats
-        public void AddBoat(Boat boat) { boats.Add(boat); }
-        public List<Boat> ToList() { return boats; }
-        //Removes a specific boat from the list of boats
-        public bool DeleteBoat(Boat boat) { return boats.Remove(boat); }
+      
+        public void AddBoat(Boat boat) { AllBoats.Add(boat); }
+        public bool DeleteBoat(Boat boat) { return AllBoats.Remove(boat); }
         public Boat? FindBoatById(int id) 
         {
             Boat? boat = null;
-            foreach (Boat b in boats) 
+            foreach (Boat b in AllBoats) 
             {
                 if (b.Id == id) return boat = b;
 
@@ -51,7 +48,7 @@ namespace Library
         public List<Boat> FilterBoatByName(string name)
         {
             filteredBoats.Clear();
-            foreach (Boat boat in boats)
+            foreach (Boat boat in AllBoats)
             {
                 if (boat.Name == name) filteredBoats.Add(boat);
             }

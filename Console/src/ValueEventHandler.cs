@@ -22,6 +22,21 @@ public static class ValueEventHandler
     {
         switch (value)
         {
+            case "både":
+                Console.WriteLine(boatRepo1.ReturnListAsString(BoatRepo.AllBoats));
+                break;
+            case "medlemmer":
+                Console.WriteLine(memberRepo1.ReturnListAsString(MemberRepo.AllMembers));
+                break;
+            case "blogs":
+                Console.WriteLine(blogRepo1.ReturnListAsString(BlogRepo.AllBlogs));
+                break;
+            case "begivenheder":
+                Console.WriteLine(boatRepo1.ReturnListAsString(BoatRepo.AllBoats));
+                break;
+            case "bookings":
+                Console.WriteLine(boatRepo1.ReturnListAsString(BoatRepo.AllBoats));
+                break;
 
         }
     }
@@ -84,13 +99,13 @@ public static class ValueEventHandler
     private static void EditBoat()
     {
         boatRepo1.AddBoat(new Boat("fewfwe", "jgewoi", "jgwoei", new DateOnly(2000, 2, 12), 1, "fw", 1, 1));
-        if (boatRepo1.ToList().Count() == 0)
+        if (BoatRepo.AllBoats.Count() == 0)
         {
             throw new ArgumentException("Der er ikke nogle både");
         }
         
         Console.WriteLine("--------------");
-        foreach (var boat in boatRepo1.ToList())
+        foreach (var boat in BoatRepo.AllBoats)
         {
             Console.WriteLine($"Både: {boat.Id}\nnavn: {boat.Name}\n--------------");
         }
@@ -102,7 +117,7 @@ public static class ValueEventHandler
 
         bool idFound = false;
 
-        foreach (var boat in boatRepo1.ToList())
+        foreach (var boat in BoatRepo.AllBoats)
         {
             if (boat.Id == selectedId)
             {
@@ -278,15 +293,15 @@ public static class ValueEventHandler
         int memberId = int.Parse(Console.ReadLine());
         Member member = memberRepo1.FindMemberById(memberId); 
 
-        Console.WriteLine("Hvorn�r vil du booke båden? (dd-MM-ÅÅÅÅ HH:mm)");
+        Console.WriteLine("Hvornår vil du booke båden? (dd-MM-ÅÅÅÅ HH:mm)");
         string startInput = Console.ReadLine();
         DateTime startDateTime = DateTime.ParseExact(startInput, "dd-MM-yyyy HH:mm", null);
 
-        Console.WriteLine("HvornÅr vil du returnere båden? (dd-MM-ÅÅÅÅ HH:mm)");
+        Console.WriteLine("Hvornår vil du returnere b�den? (dd-MM-ÅÅÅÅ HH:mm)");
         string endInput = Console.ReadLine();
         DateTime endDateTime = DateTime.ParseExact(endInput, "dd-MM-yyyy HH:mm", null);
 
-        Console.WriteLine("Skal andre med pÅ båden? hvis ja sÅ skriv Navn og Adresse");
+        Console.WriteLine("Skal andre med på båden? hvis ja så skriv Navn og Adresse");
         string guests = Console.ReadLine();
 
         Booking booking1 = new Booking(startDateTime, endDateTime, member, boat, guests);

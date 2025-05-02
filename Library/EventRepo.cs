@@ -9,30 +9,25 @@ namespace Library
 {
     public class EventRepo
     {
-        private static List<Event> events;
+        public static List<Event> AllEvents { get; private set; }
         private static List<Event> filteredEvents;
 
         public EventRepo()
         {
-            events = new List<Event>();
+            AllEvents = new List<Event>();
             filteredEvents = new List<Event>();
         }
 
-        public List<Event> GetEvents() { return events; }
         public void AddEvent(Event newEvent)
         {
-            events.Add(newEvent);
+            AllEvents.Add(newEvent);
         }
 
-        public List<Event> GetAllEvents()
-        {
-            return events;
-        }
 
         public Event? GetEventById(int id)
         {
             Event? ev = null;
-            foreach (Event e in events)
+            foreach (Event e in AllEvents)
             {
                 if (e.Id == id) 
                 {  
@@ -50,7 +45,7 @@ namespace Library
 
         public List<Event> GetEventByName(string name)
         {
-            foreach (Event e in events)
+            foreach (Event e in AllEvents)
             {
                 if (e.EventName == name)
                 {
@@ -77,7 +72,7 @@ namespace Library
             Event eventToRemove = GetEventById(id);
             if (eventToRemove != null)
             {
-                events.Remove(eventToRemove);
+                AllEvents.Remove(eventToRemove);
                 return true;
             }
             return false;

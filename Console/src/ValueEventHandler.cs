@@ -4,8 +4,7 @@ using System.Linq.Expressions;
 using System.Reflection;
 using System.Threading.Channels;
 using System.Xml.Linq;
-using Library;
-using static Library.Member;
+
 
 
 
@@ -19,22 +18,21 @@ public static class ValueEventHandler
     {
         switch (value)
         {
-            case "både":
+            case "båd":
                 Console.WriteLine(BoatRepo.ReturnListAsString(BoatRepo.AllBoats));
                 break;
-            case "medlemmer":
+            case "medlem":
                 Console.WriteLine(MemberRepo.ReturnListAsString(MemberRepo.AllMembers));
                 break;
-            case "blogs":
+            case "blog":
                 Console.WriteLine(BlogRepo.ReturnListAsString(BlogRepo.AllBlogs));
                 break;
-            case "begivenheder":
+            case "begivenhed":
                 Console.WriteLine(BoatRepo.ReturnListAsString(BoatRepo.AllBoats));
                 break;
-            case "bookings":
+            case "booking":
                 Console.WriteLine(BoatRepo.ReturnListAsString(BoatRepo.AllBoats));
                 break;
-
         }
     }
 

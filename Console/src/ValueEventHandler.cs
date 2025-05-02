@@ -347,7 +347,7 @@ public static class ValueEventHandler
         string type = Console.ReadLine();
 
         Console.WriteLine("Sejlnummer");
-        int sailingNummer = int.Parse(Console.ReadLine()); //What is Parse? And what is it funktion?
+        int sailingNummer = int.Parse(Console.ReadLine()); 
 
         Console.WriteLine("Byggeår");
         int year = int.Parse(Console.ReadLine());

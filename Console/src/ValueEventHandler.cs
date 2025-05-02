@@ -60,7 +60,7 @@ public static class ValueEventHandler
     {
         switch (value.ToLower())
         {
-            case "b�d":
+            case "båd":
                 CreateNewBoat();
                 break;
 

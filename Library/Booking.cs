@@ -15,6 +15,7 @@ namespace Library
         public Member Member { get; set; }
         public Boat Boat { get; set; }
         public string Guests { get; set; }
+
         public Booking(DateTime dateTimeBegin, DateTime dateTimeEnd, Member member, Boat boat, string guests)
         {
             Id = idNext++;

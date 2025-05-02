@@ -85,13 +85,13 @@ public static class ValueEventHandler
     private static void EditBoat()
     {
         boatRepo1.AddBoat(new Boat("fewfwe", "jgewoi", "jgwoei", new DateOnly(2000, 2, 12), 1, "fw", 1, 1));
-        if (boatRepo1.ToList().Count() == 0)
+        if (BoatRepo.AllBoats.Count() == 0)
         {
             throw new ArgumentException("Der er ikke nogle både");
         }
         
         Console.WriteLine("--------------");
-        foreach (var boat in boatRepo1.ToList())
+        foreach (var boat in BoatRepo.AllBoats)
         {
             Console.WriteLine($"Både: {boat.Id}\nnavn: {boat.Name}\n--------------");
         }
@@ -103,7 +103,7 @@ public static class ValueEventHandler
 
         bool idFound = false;
 
-        foreach (var boat in boatRepo1.ToList())
+        foreach (var boat in BoatRepo.AllBoats)
         {
             if (boat.Id == selectedId)
             {

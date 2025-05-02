@@ -58,6 +58,7 @@ public class MainHandler
                     ValueEventHandler.KeyEdit(keyValuePair.Value);
                     break;
                 case "fjern":
+                    ValueEventHandler.KeyDelete(keyValuePair.Value);
                     break;
                 case "ændr":
                     break;

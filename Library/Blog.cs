@@ -32,7 +32,7 @@ namespace Library
 
         public override string ToString()
         {
-            return $"Titel: {Title}\nDato for upload: {CreationDate}\nBeskrivelse: {Description}\nBegivenhed: {RelatedEvent}\nSkribent: {Writer.Name}.";
+            return $"ID: {Id}\nTitel: {Title}\nDato for upload: {CreationDate}\nBeskrivelse: {Description}\nBegivenhed: {RelatedEvent}\nSkribent: {Writer.Name}.\n";
         }
     }
 }

@@ -29,7 +29,7 @@ namespace Library
 
         public override string ToString()
         {
-            return $"{Boat.Name} er booket af {Member.Name}\nDato: fra {DateTimeBegin} til {DateTimeEnd}\nAndre på båden: {Guests}\n";
+            return $"Booking ID: {Id}\n{Boat.Name} er booket af {Member.Name}\nDato: fra {DateTimeBegin} til {DateTimeEnd}\nAndre på båden: {Guests}\n";
         }
     }
 }

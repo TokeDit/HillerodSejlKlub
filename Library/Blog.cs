@@ -13,7 +13,6 @@ namespace Library
         public int Id { get; private set; }
         public string Name {get; set;}
         public DateTime StartDate { get; set;}
-        public DateTime EndDate { get; set;}
         public string Description {get; set;}
         public Event Event {get; set;}
         public Member Writer {get; set;}
@@ -23,15 +22,13 @@ namespace Library
             Id = idNext;
             Name = name;
             StartDate = startdate;
-            EndDate = enddate;
             Description = description;
             Writer = writer;
-            
         }
 
         public override string ToString()
         {
-            return $"Navn: {Name}\nStart dato: {StartDate}\nSlut dato: {EndDate}\nBeskrivelse: {Description}\nBegivenhed: {Event}\nMedlemmer: {Writer}.";
+            return $"Navn: {Name}\nStart dato: {StartDate}\nBeskrivelse: {Description}\nBegivenhed: {Event}\nMedlemmer: {Writer}.";
         }
     }
 }

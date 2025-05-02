@@ -11,24 +11,33 @@ public class MainHandler
     private static CustomDictionary<string, string> m_dictionary = new CustomDictionary<string, string>();
 
 
-
+    private bool m_run = true;
 
 
 
     public MainHandler()
     {
-       
-        while (true)
+ 
+
+        while (m_run)
         {
-            Console.WriteLine("Indtast en kommando (eller 'exit' for at afslutte):");
+            Console.WriteLine("Indtast en kommando (eller 'exit' for at afslutte):\n------------");
             string? input = Console.ReadLine();
 
             if (string.IsNullOrWhiteSpace(input))
                 continue;
 
-            if (input.ToLower() == "exit")
-                break;
+            if (input.ToLower() == "hjælp") 
+            {
+                Console.WriteLine("Indtast en af følgend\n------------\nSe\nTilfoj\nRediger\nFjern\n------------\nEfterfulgt af følgende\n------------\nBåd\nMedlem\nBegivenhed\nBlog\nBooking\n------------");
+                continue;
+            }
 
+            if (input.ToLower() == "exit")
+            { 
+                m_run = false;
+                break;
+            }
             FindKeyValuePair(input);
             FindKey();
         }
@@ -60,11 +69,12 @@ public class MainHandler
                 case "fjern":
                     ValueEventHandler.KeyDelete(keyValuePair.Value);
                     break;
-                case "ændr":
+                case "hjælp":
                     break;
-
             }
         }
+
+        
         m_dictionary.ToList().Clear();
     }
 

@@ -205,10 +205,10 @@ public static class ValueEventHandler
                 selectedMember.Email = keyValuePair.Value;
                 break;
             case "certifikat":
-                selectedMember.MemberCertificateType = (BoatSize)int.Parse(keyValuePair.Value);
+                selectedMember.MemberCertificateType = (Member.BoatSize)int.Parse(keyValuePair.Value);
                 break;
             case "adgangsniveau":
-                selectedMember.MemberAccesLevel = (Acceslevel)int.Parse(keyValuePair.Value);
+                selectedMember.MemberAccesLevel = (Member.Acceslevel)int.Parse(keyValuePair.Value);
                 break;
         }
         Console.WriteLine(selectedMember.ToString());
@@ -327,7 +327,7 @@ public static class ValueEventHandler
 
         int selectedId = int.Parse(Console.ReadLine());
 
-        Booking? selectedBooking = BookingRepo.FilterBookingById(selectedId);
+        Booking? selectedBooking = BookingRepo.GetBookingById(selectedId);
 
         if (selectedBooking != null)
         {

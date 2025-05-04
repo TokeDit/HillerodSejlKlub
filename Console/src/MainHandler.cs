@@ -17,7 +17,8 @@ public class MainHandler
 
     public MainHandler()
     {
-       
+       BookingRepo.AddBooking(new Booking(new DateTime(2000, 12, 9), new DateTime(2000, 12, 9, 12, 4, 2),
+        MemberRepo.FindMemberById(1), new Boat("fewifw", "gw", "gwef", new DateOnly(2423, 9, 21), 1, "jofew", 13, 1), "fjeoiw"));
         while (true)
         {
             Console.WriteLine("Indtast en kommando (eller 'exit' for at afslutte):");

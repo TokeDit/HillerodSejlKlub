@@ -40,31 +40,40 @@ public static class ValueEventHandler
 
     public static void KeyEdit(string value)
     {
-        switch (value.ToLower())
+        while(!m_eventSuccess)
         {
-            case "båd":
-                while (!m_eventSuccess)
+            try
+            {
+                switch (value.ToLower())
                 {
-                    try
-                    {
+                    case "båd":
                         EditBoat();
-                    }
-                    catch (TargetException e)
-                    {
-                        Console.WriteLine(e.Message);
-                    }
-                    catch (ArgumentException e)
-                    {
-                        Console.WriteLine(e.Message);
                         break;
-                    }
+                    case "medlem":
+                        EditMember();
+                        break;
+                    case "begivenhed":
+                        EditEvent();
+                        break;
+                    case "blog":
+                        EditBlog();
+                        break;
+                    case "reservation":
+                        EditBooking();
+                        break;
                 }
-                m_eventSuccess = false;
-                break;
-            case "medlem":
-                EditMember();
-                break;
+                m_eventSuccess = true;
+            }
+            catch (NoSearhResultException e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            catch (ArgumentException e)
+            {
+                Console.WriteLine(e.Message);
+            }
         }
+        m_eventSuccess = false;
     }
 
     public static void KeyNew(string value)
@@ -95,7 +104,6 @@ public static class ValueEventHandler
     // Takes the boats and changes one value, input is taken from the console
     private static void EditBoat()
     {
-        BoatRepo.AddBoat(new Boat("fewfwe", "jgewoi", "jgwoei", new DateOnly(2000, 2, 12), 1, "fw", 1, 1));
         if (BoatRepo.AllBoats.Count() == 0)
         {
             throw new ArgumentException("Der er ikke nogle både");
@@ -104,7 +112,7 @@ public static class ValueEventHandler
         Console.WriteLine("--------------");
         foreach (var boat in BoatRepo.AllBoats)
         {
-            Console.WriteLine($"Både: {boat.Id}\nnavn: {boat.Name}\n--------------");
+            Console.WriteLine($"Båd: {boat.Id}\nnavn: {boat.Name}\n--------------");
         }
         Console.WriteLine("Vælg bådens Id:");
 
@@ -112,20 +120,13 @@ public static class ValueEventHandler
 
         Boat? selectedBoat = null;
 
-        bool idFound = false;
+        selectedBoat = BoatRepo.FindBoatById(selectedId);
 
-        foreach (var boat in BoatRepo.AllBoats)
+        if (selectedBoat != null)
         {
-            if (boat.Id == selectedId)
-            {
-                Console.WriteLine(boat.ToString());
-                selectedBoat = boat;
-                idFound = true;
-                break;
-            }
+            Console.WriteLine(selectedBoat.ToString());
         }
-
-        if (!idFound)
+        else
         {
             throw new TargetException($"\nBåden med id'et {selectedId} blev ikke fundet");
         }
@@ -168,7 +169,203 @@ public static class ValueEventHandler
 
     private static void EditMember()
     {
+        Console.WriteLine("--------------");
+        foreach (var member in MemberRepo.AllMembers)
+        {
+            Console.WriteLine($"Medlem: {member.Id}\nnavn: {member.Name}\n--------------");
+        }
+        Console.WriteLine("vælg medlemets Id:");
 
+        int selectedId = int.Parse(Console.ReadLine());
+
+        Member? selectedMember = null;
+
+        if (selectedMember != null)
+        {
+            Console.WriteLine(selectedMember.ToString());
+        }
+        else
+        {
+            throw new TargetException($"\nMedlemmet med id'et {selectedId} blev ikke fundet");
+        }
+        Console.WriteLine("Vælg hvad du vil redigere og hvad det skal ændres til fx:\n\nnavn Claus:\n");
+        string sToKeyValuePair = Console.ReadLine();
+        Console.WriteLine();
+        KeyValuePair<string, string> keyValuePair = CommonFunc.GetKeyValuePair(sToKeyValuePair);
+        switch (keyValuePair.Key.ToLower())
+        {
+            case "navn":
+                selectedMember.Name = keyValuePair.Value;
+                break;
+            case "address":
+                selectedMember.Address = keyValuePair.Value;
+                break;
+            case "nummer":
+                selectedMember.TelephoneNumber = keyValuePair.Value;
+                break;
+            case "email":
+                selectedMember.Email = keyValuePair.Value;
+                break;
+            case "certifikat":
+                selectedMember.MemberCertificateType = (BoatSize)int.Parse(keyValuePair.Value);
+                break;
+            case "adgangsniveau":
+                selectedMember.MemberAccesLevel = (Acceslevel)int.Parse(keyValuePair.Value);
+                break;
+        }
+        Console.WriteLine(selectedMember.ToString());
+        m_eventSuccess = true;
+    }
+
+    private static void EditEvent()
+    {
+        Console.WriteLine("--------------");
+        foreach (var currentEvent in EventRepo.AllEvents)
+        {
+            Console.WriteLine($"Begivenhed: {currentEvent.Id}\nnavn: {currentEvent.EventName}\n--------------");
+        }
+        Console.WriteLine("Vælg bådens Id:");
+
+        int selectedId = int.Parse(Console.ReadLine());
+
+        Event? selectedEvent = null;
+
+        selectedEvent = EventRepo.GetEventById(selectedId);
+
+        if (selectedEvent != null)
+        {
+            Console.WriteLine(selectedEvent.ToString());
+        }
+        else
+        {
+            throw new TargetException($"\nBåden med id'et {selectedId} blev ikke fundet");
+        }
+
+        Console.WriteLine("Vælg hvad du vil redigere og hvad det skal ændres til fx:\n\nnavn sommerfuglen:\n");
+        string sToKeyValuePair = Console.ReadLine();
+        Console.WriteLine();
+        KeyValuePair<string, string> keyValuePair = CommonFunc.GetKeyValuePair(sToKeyValuePair);
+        switch (keyValuePair.Key.ToLower())
+        {
+            case "navn":
+                selectedEvent.EventName = keyValuePair.Value;
+                break;
+            case "start":
+                selectedEvent.StartDate = DateTime.Parse(keyValuePair.Value);
+                break;
+            case "slut":
+                selectedEvent.EndDate = DateTime.Parse(keyValuePair.Value);
+                break;
+            case "koordinator":
+                foreach (var member in MemberRepo.FilterMemberByName(keyValuePair.Value))
+                {
+                    Console.WriteLine(member.ToString());
+                }
+                Console.WriteLine("Skriv kun Id på medlem");
+                int coordinatorId = int.Parse(Console.ReadLine());
+                selectedEvent.CordCoordinator = MemberRepo.FindMemberById(coordinatorId);
+                break;
+        }
+
+        Console.WriteLine(selectedEvent.ToString());
+        m_eventSuccess = true;
+    }
+
+    private static void EditBlog()
+    {
+        Console.WriteLine("--------------");
+        foreach (var blog in BlogRepo.AllBlogs)
+        {
+            Console.WriteLine($"Medlem: {blog.Id}\nnavn: {blog.Title}\n--------------");
+        }
+        Console.WriteLine("vælg Blog Id:");
+
+        int selectedId = int.Parse(Console.ReadLine());
+
+        Blog? selectedBlog = null;
+
+        if (selectedBlog != null)
+        {
+            Console.WriteLine(selectedBlog.ToString());
+        }
+        else
+        {
+            throw new TargetException($"\nBlog med id'et {selectedId} blev ikke fundet");
+        }
+        Console.WriteLine("Vælg hvad du vil redigere og hvad det skal ændres til fx:\n\nnavn Claus:\n");
+        string sToKeyValuePair = Console.ReadLine();
+        Console.WriteLine();
+        KeyValuePair<string, string> keyValuePair = CommonFunc.GetKeyValuePair(sToKeyValuePair);
+        switch (keyValuePair.Key.ToLower())
+        {
+            case "title":
+                selectedBlog.Title = keyValuePair.Value;
+                break;
+            case "beskrivelse":
+                selectedBlog.Description = keyValuePair.Value;
+                break;
+            case "begivenhed":
+                foreach (var currentEvent in EventRepo.GetEventByName(keyValuePair.Value))
+                {
+                    Console.WriteLine(currentEvent.ToString());
+                }
+                Console.WriteLine("Skriv kun Id på medlem");
+                int eventId = int.Parse(Console.ReadLine());
+                selectedBlog.RelatedEvent = EventRepo.GetEventById(eventId);
+                break;
+        }
+        Console.WriteLine(selectedBlog.ToString());
+        m_eventSuccess = true;
+    }
+
+    private static void EditBooking()
+    {
+        Console.WriteLine("--------------");
+        foreach (var booking in BookingRepo.AllBookings)
+        {
+            Console.WriteLine($"reservation: {booking.Id}\nStart dato og tid: {booking.DateTimeBegin}\n--------------");
+        }
+        Console.WriteLine("vælg reservation Id:");
+
+        int selectedId = int.Parse(Console.ReadLine());
+
+        Booking? selectedBooking = BookingRepo.FilterBookingById(selectedId);
+
+        if (selectedBooking != null)
+        {
+            Console.WriteLine(selectedBooking.ToString());
+        }
+        else
+        {
+            throw new TargetException($"\reservation med id'et {selectedId} blev ikke fundet");
+        }
+        Console.WriteLine("Vælg hvad du vil redigere og hvad det skal ændres til fx:\n\nstart 12-11-2026:\n");
+        string sToKeyValuePair = Console.ReadLine();
+        Console.WriteLine();
+        KeyValuePair<string, string> keyValuePair = CommonFunc.GetKeyValuePair(sToKeyValuePair);
+        switch (keyValuePair.Key.ToLower())
+        {
+            case "start":
+                selectedBooking.DateTimeBegin = DateTime.Parse(keyValuePair.Value);
+                break;
+            case "slut":
+                selectedBooking.DateTimeEnd = DateTime.Parse(keyValuePair.Value);
+                break;
+            case "båd":
+                foreach (var currentboat in BoatRepo.FilterBoatByName(keyValuePair.Value))
+                {
+                    Console.WriteLine(currentboat.ToString());
+                }
+                Console.WriteLine("Skriv kun Id på reservationen");
+                int boatId = int.Parse(Console.ReadLine());
+                selectedBooking.Boat = BoatRepo.FindBoatById(boatId);
+                break;
+            case "gost":
+                selectedBooking.Guests = keyValuePair.Value;
+                break;
+        }
+        Console.WriteLine(selectedBooking.ToString());
+        m_eventSuccess = true;
     }
 
     private static void CreateNewBoat()

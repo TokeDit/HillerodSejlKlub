@@ -8,14 +8,18 @@ namespace Library
 {
     public static class BookingRepo
     {
-        public static List<Booking> AllBookings { get; private set; } = new List<Booking>();
+        public static List<Booking> AllBookings { get; private set; } = new List<Booking>()
+        {
+            new(new DateTime(2025, 10, 10, 10, 00, 00), new DateTime(2025, 10, 10, 15, 00, 00), MemberRepo.FindMemberById(2), BoatRepo.FindBoatById(1), "Bent"),
+            new(new DateTime(2025, 10, 10, 10, 00, 00), new DateTime(2025, 10, 10, 15, 00, 00), MemberRepo.FindMemberById(3), BoatRepo.FindBoatById(2), "Gert")
+        };
         private static List<Booking> filteredBookings = new List<Booking>();
         
      
         public static void AddBooking(Booking booking) { AllBookings.Add(booking); }
        
 
-        public static bool DelteBooking(int id)
+        public static bool DeleteBooking(int id)
         {
             foreach (Booking m in AllBookings)
             {
@@ -29,7 +33,7 @@ namespace Library
 
 
         //Filters the List by the Unique Id given to a Booking
-        public static Booking? FilterBookingById(int Id)
+        public static Booking? GetBookingById(int Id)
         {
             Booking? booking = null;
             foreach (Booking b in AllBookings)

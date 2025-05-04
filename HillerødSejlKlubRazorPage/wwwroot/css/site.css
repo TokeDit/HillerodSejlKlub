@@ -1,11 +1,13 @@
-html {
-  font-size: 14px;
+﻿html {
+    font-size: 14px;
+    color: #495057;
 }
 
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+    html {
+        font-size: 16px;
+        color: #495057;
+    }
 }
 
 .btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
@@ -13,10 +15,42 @@ html {
 }
 
 html {
+
   position: relative;
   min-height: 100%;
 }
 
-body {
-  margin-bottom: 60px;
+﻿body {
+    font-family: Comic Sans MS;
+    color: #495057;
+    padding: 0;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60vh;
+    width: 60vw;
+}
+
+.center-image {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+h1 {
+    font-family: Comic Sans MS;
+}
+
+h2 {
+    margin-left: 20px;
+    color: #495057;
+}
+
+style {
+    font-family: Comic Sans MS;
+}
+
+div {
+    font-family: Comic Sans MS;
 }

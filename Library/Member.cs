@@ -96,7 +96,7 @@ namespace Library
             }
 
 
-            return $"Name: {Name}\nMember Id: {Id}\nAdresse: {Address}\nTelephone number: {TelephoneNumber}\nEmail: {Email}\nBåd certificat: {memberCertification}\nMedlems niveau: {memberAcceslevel}\n";
+            return $"ID: {Id}\nName: {Name}\nMember Id: {Id}\nAdresse: {Address}\nTelephone number: {TelephoneNumber}\nEmail: {Email}\nBåd certificat: {memberCertification}\nMedlems niveau: {memberAcceslevel}\n";
         }
     
     }

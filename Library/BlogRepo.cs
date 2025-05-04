@@ -11,7 +11,11 @@ namespace Library
 {
     public static class BlogRepo
     {
-        public static List<Blog> AllBlogs { get; private set; } = new List<Blog>();
+        public static List<Blog> AllBlogs { get; private set; } = new List<Blog>() 
+        { 
+            new("Fødselsdag", new DateOnly(2025, 02, 02), "Esti har fødselsdag", MemberRepo.FindMemberById(1)),
+            new("Lønningsdag", new DateOnly(2025, 01, 26), "Der er løn i dag woop woop", MemberRepo.FindMemberById(3))
+        };
         private static List<Blog> filteredBlogs = new List<Blog>();
 
         
@@ -25,7 +29,7 @@ namespace Library
             return AllBlogs;
         }
 
-        private static Blog? GetBlogById(int id)
+        public static Blog? GetBlogById(int id)
         {
             Blog? blog = null;
             foreach (Blog b in AllBlogs)
